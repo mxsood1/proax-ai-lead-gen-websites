@@ -1,0 +1,72 @@
+{
+  "id": "obsolete-terminal-block-replacement-7c2d90",
+  "keyword": "obsolete terminal block replacement",
+  "status": "approved",
+  "source": "manual",
+  "createdBy": "desk",
+  "createdAt": "2026-11-03T13:00:00.000Z",
+  "updatedAt": "2026-11-03T15:00:00.000Z",
+  "publishedAt": "2026-11-03T15:00:00.000Z",
+  "guide": {
+    "slug": "obsolete-terminal-block-replacement",
+    "title": "How to replace an obsolete terminal block without rewiring",
+    "shortTitle": "Replacing obsolete blocks",
+    "description": "A step-by-step way to find a replacement for a discontinued terminal block: what to record, what must match, and when to replace the whole strip",
+    "category": "Selection",
+    "readMinutes": 5,
+    "updated": "2026-11-03",
+    "published": "2026-11-03",
+    "related": ["screw-clamp", "push-in", "accessories"],
+    "keyTakeaways": [
+      "Record the part number, width, rail type and connection style before you remove anything",
+      "Width matters as much as the electrical rating, because jumpers and markers depend on it",
+      "If several blocks in a strip are obsolete, replacing a section can be faster than matching each one"
+    ],
+    "body": [
+      { "type": "p", "text": "To replace an obsolete terminal block, match the rail type, the block width and the connection style first, then confirm the conductor range and ratings. Those details decide whether a new block will drop into the existing strip without rewiring. The steps below work for any manufacturer." },
+      { "type": "h2", "text": "1. Identify what you have" },
+      { "type": "p", "text": "Most blocks carry the manufacturer and type on the side of the housing, sometimes with the item number. Write down everything printed on it, and photograph the block from the side and the top. If the label is unreadable, the shape of the housing, the colour and the position of the release or screw are often enough to narrow it down." },
+      { "type": "h2", "text": "2. Measure the details that must match" },
+      {
+        "type": "table",
+        "head": ["Detail", "Why it matters"],
+        "rows": [
+          ["Rail type", "35 mm top-hat, 15 mm miniature and G-rail need different mounting feet"],
+          ["Block width", "Jumpers, end plates and markers are made for a specific pitch"],
+          ["Connection style", "Screw, spring or push-in changes the wiring and the tools"],
+          ["Conductor range", "The new block must accept the existing wire, with or without ferrules"],
+          ["Current and voltage", "The replacement must meet or exceed the original ratings"],
+          ["Approvals", "UL, CSA or hazardous-location approvals may be required for the panel"]
+        ]
+      },
+      { "type": "h2", "text": "3. Look for a successor first" },
+      { "type": "p", "text": "Manufacturers usually replace a discontinued series with a successor of the same width and footprint. A successor from the same manufacturer is the simplest swap, because it is designed to sit beside the old blocks and often uses the same accessories. Check the manufacturer's notice for the recommended replacement." },
+      { "type": "h2", "text": "4. Consider an equivalent from another manufacturer" },
+      { "type": "p", "text": "If there is no direct successor, an equivalent from another manufacturer can work when the width, rail and ratings line up. The catch is accessories. Jumpers, end plates and markers rarely fit across brands, so a single mixed block in a strip can leave you without a matching end plate or bridge." },
+      { "type": "callout", "title": "Mixing brands in one strip", "text": "Different brands can sit on the same rail, but put an end plate on the open side of each block where the profiles differ. Plan jumpers so they only bridge blocks of the same series." },
+      { "type": "h2", "text": "5. Decide whether to replace the section" },
+      { "type": "p", "text": "When several blocks in a strip are obsolete, or the accessories are no longer available, replacing a whole section with a current series is often quicker and cleaner. You get one family, matching accessories and a strip that is easy to maintain. Re-terminating a section is also a good time to fix marking and add spare positions." },
+      {
+        "type": "ul",
+        "items": [
+          "List every block in the section, including ground blocks",
+          "Count end plates, end stops, jumpers and markers",
+          "Note any special functions such as fuse or disconnect blocks",
+          "Check the space on the rail, since a new series may be slightly wider"
+        ]
+      }
+    ],
+    "faqs": [
+      { "q": "Can I mix terminal blocks from different manufacturers on one rail?", "a": "Yes, as long as each block fits the rail. Use end plates where the profiles differ, and only bridge blocks of the same series with jumpers designed for them." },
+      { "q": "What if the part number has worn off?", "a": "Measure the width, note the rail and connection style, and take clear photos of the side and top. That is usually enough to identify the series or find an equivalent." },
+      { "q": "Is an equivalent block approved for my panel?", "a": "Check the replacement's approvals against what the panel needs, such as UL or CSA. Equivalent dimensions don't guarantee the same approvals." }
+    ]
+  },
+  "factCheck": [
+    "Successor series usually keep the same width and footprint: generally true, confirm wording",
+    "Accessories rarely fit across brands: confirm phrasing is not too absolute",
+    "End plates needed where block profiles differ when mixing brands"
+  ],
+  "reviewNote": "Demo article written for the design preview",
+  "history": [{ "at": "2026-11-03T15:00:00.000Z", "note": "Demo article added and approved for the local preview" }]
+}

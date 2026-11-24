@@ -1,0 +1,144 @@
+{
+  "id": "disconnect-terminal-blocks-testing-a94c17",
+  "keyword": "disconnect terminal block for testing",
+  "status": "approved",
+  "source": "manual",
+  "createdBy": "desk",
+  "createdAt": "2026-11-17T13:00:00.000Z",
+  "updatedAt": "2026-11-17T15:00:00.000Z",
+  "publishedAt": "2026-11-17T15:00:00.000Z",
+  "guide": {
+    "slug": "disconnect-terminal-blocks-for-testing",
+    "title": "Disconnect terminal blocks: choosing one for testing",
+    "shortTitle": "Disconnect terminal blocks",
+    "description": "Knife, slide and plug-in disconnect terminal blocks compared, with the safety rule every technician must know for current transformer circuits",
+    "category": "Selection",
+    "readMinutes": 4,
+    "updated": "2026-11-17",
+    "published": "2026-11-17",
+    "related": [
+      "disconnect",
+      "ground",
+      "accessories"
+    ],
+    "keyTakeaways": [
+      "Disconnect blocks let you isolate and test a circuit without lifting wires",
+      "They are made for isolation, not for switching load current",
+      "Current transformer circuits need shorting terminal blocks, never a plain disconnect"
+    ],
+    "body": [
+      {
+        "type": "p",
+        "text": "A disconnect terminal block has a built-in element that opens the circuit, so a technician can isolate a field device or take a measurement without disconnecting conductors. They are common in commissioning, measurement circuits and any panel where circuits are tested regularly."
+      },
+      {
+        "type": "h2",
+        "text": "Types of disconnect element"
+      },
+      {
+        "type": "table",
+        "head": [
+          "Type",
+          "How it opens",
+          "Good for"
+        ],
+        "rows": [
+          [
+            "Knife disconnect",
+            "A hinged or sliding knife lifts out of the current path",
+            "Frequent testing and measurement circuits"
+          ],
+          [
+            "Lever or slide",
+            "A lever or slider separates the contacts",
+            "Quick isolation with a visible open position"
+          ],
+          [
+            "Plug-in bridge",
+            "A removable bridge or plug connects both sides",
+            "Circuits that are isolated less often"
+          ],
+          [
+            "Neutral disconnect",
+            "A disconnect in the neutral or PE conductor",
+            "Insulation testing of neutral conductors"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Test sockets"
+      },
+      {
+        "type": "p",
+        "text": "Many disconnect blocks include test sockets on both sides of the disconnect, sized for standard test plugs. With the circuit open you can measure each side separately, or inject a signal into the field side. Check which test plug diameter the block takes so your test leads fit."
+      },
+      {
+        "type": "h2",
+        "text": "Isolation, not switching"
+      },
+      {
+        "type": "p",
+        "text": "Most disconnect terminal blocks are rated for isolation only. Opening one while load current is flowing can draw an arc and damage the contacts. Switch the load off first, then open the disconnect, unless the datasheet gives a switching rating."
+      },
+      {
+        "type": "callout",
+        "title": "Current transformer circuits",
+        "text": "Never open the secondary of a current transformer while the primary is energized. The secondary voltage can rise to dangerous levels. Use CT terminal blocks that short the secondary before the circuit is opened."
+      },
+      {
+        "type": "h2",
+        "text": "Marking and documentation"
+      },
+      {
+        "type": "p",
+        "text": "Mark each disconnect block on both sides, and show the disconnect on the schematic, so whoever tests the circuit knows which side goes to the field and which goes to the controller. Many panels also label the disconnect element itself, so an open position is easy to spot during a walk-through."
+      },
+      {
+        "type": "h2",
+        "text": "Choosing the right block"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Match the connection style and width of the rest of the strip",
+          "Check the rated voltage and current of the disconnect, not just the terminals",
+          "Choose a design whose open position is easy to see",
+          "Plan markers for both sides, since each side is a separate circuit point",
+          "Use dedicated CT shorting blocks for current transformer secondaries"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Disconnect blocks are usually a little more expensive than feed-through blocks, so many panels only use them where testing is planned. For measurement circuits and field devices that need routine checks, they save time on every visit."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can I open a disconnect terminal block under load?",
+        "a": "Usually not. Most are rated for isolation only. Switch off the load first unless the datasheet gives a switching rating for the disconnect element."
+      },
+      {
+        "q": "What is a neutral disconnect terminal block?",
+        "a": "A block that lets you open the neutral conductor, typically for insulation resistance testing, without disconnecting the wire."
+      },
+      {
+        "q": "Can I use a disconnect block on a CT secondary?",
+        "a": "Not a plain one. Current transformer secondaries must be shorted before they are opened, so use terminal blocks designed for CT circuits."
+      }
+    ]
+  },
+  "factCheck": [
+    "Most disconnect blocks rated for isolation only, not load switching",
+    "CT secondary must never be opened under primary current: standard safety rule, confirm wording",
+    "Neutral disconnect blocks used for insulation testing",
+    "Test socket diameters vary by series: kept general on purpose"
+  ],
+  "reviewNote": "Demo article written for the design preview",
+  "history": [
+    {
+      "at": "2026-11-17T15:00:00.000Z",
+      "note": "Demo article added and approved for the local preview"
+    }
+  ]
+}

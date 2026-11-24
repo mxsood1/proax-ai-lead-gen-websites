@@ -1,0 +1,197 @@
+{
+ "photos": {
+  "hero-grey": {
+   "src": "/photos/hero-grey.png",
+   "width": 797,
+   "height": 725,
+   "alt": "Grey PT 2,5 push-in feed-through terminal block, side view with orange push buttons",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact PT 2,5",
+   "number": "3209510"
+  },
+  "hero-blue": {
+   "src": "/photos/hero-blue.png",
+   "width": 797,
+   "height": 724,
+   "alt": "Blue PT 2,5 BU push-in terminal block for neutral conductors, side view",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact PT 2,5 BU",
+   "number": "3209523"
+  },
+  "hero-pe": {
+   "src": "/photos/hero-pe.png",
+   "width": 798,
+   "height": 749,
+   "alt": "Green-yellow PT 2,5-PE protective earth push-in terminal block, side view",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact PT 2,5-PE",
+   "number": "3209536"
+  },
+  "push-in": {
+   "src": "/photos/push-in.png",
+   "width": 797,
+   "height": 725,
+   "alt": "PT 2,5 push-in terminal block, side view showing the orange push buttons and spring contacts",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact PT 2,5",
+   "number": "3209510"
+  },
+  "spring-clamp": {
+   "src": "/photos/spring-clamp.png",
+   "width": 624,
+   "height": 799,
+   "alt": "Row of grey ST 2,5 spring-cage terminal blocks",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact ST 2,5",
+   "number": "3031212"
+  },
+  "screw-clamp": {
+   "src": "/photos/screw-clamp.png",
+   "width": 617,
+   "height": 799,
+   "alt": "Row of grey UT 4 screw-clamp terminal blocks",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact UT 4",
+   "number": "3044102"
+  },
+  "ground": {
+   "src": "/photos/ground.png",
+   "width": 798,
+   "height": 749,
+   "alt": "Green-yellow PT 2,5-PE ground terminal block with the metal foot that bonds to the DIN rail",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact PT 2,5-PE",
+   "number": "3209536"
+  },
+  "fuse": {
+   "src": "/photos/fuse.png",
+   "width": 659,
+   "height": 799,
+   "alt": "Black PT 4-HESILED fuse terminal blocks with hinged 5 x 20 mm fuse carriers and LED indicator",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact PT 4-HESILED 24 (5X20)",
+   "number": "3211903"
+  },
+  "disconnect": {
+   "src": "/photos/disconnect.png",
+   "width": 648,
+   "height": 798,
+   "alt": "Green-yellow UT 4-MTD-PE/S disconnect terminal blocks with grey disconnect elements",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact UT 4-MTD-PE/S",
+   "number": "3046207"
+  },
+  "multi-level": {
+   "src": "/photos/multi-level.png",
+   "width": 709,
+   "height": 799,
+   "alt": "Grey PTTBS 2,5 double-level push-in terminal blocks",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact PTTBS 2,5",
+   "number": "3209604"
+  },
+  "pcb": {
+   "src": "/photos/pcb.png",
+   "width": 799,
+   "height": 641,
+   "alt": "Green four-position MSTB pluggable PCB terminal block, 5.08 mm pitch",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact MSTB 2,5/ 4-ST-5,08",
+   "number": "1757035"
+  },
+  "accessories": {
+   "src": "/photos/accessories.png",
+   "width": 1000,
+   "height": 682,
+   "alt": "Grey D-UT end cover and red FBS 10-position plug-in jumper bridge",
+   "credit": "phoenix-contact",
+   "cropped": false,
+   "cutout": true,
+   "part": "Phoenix Contact D-UT 2,5/10 end cover and FBS 10-5 plug-in jumper",
+   "number": "3047028, 3030213"
+  },
+  "header-finder": {
+   "src": "/headers/header-finder.webp",
+   "width": 1920,
+   "height": 1282,
+   "alt": "Technician working inside an electrical panel",
+   "credit": "public-domain",
+   "cropped": true,
+   "background": true
+  },
+  "header-identify": {
+   "src": "/headers/header-identify.webp",
+   "width": 1267,
+   "height": 960,
+   "alt": "Technician testing a fuse panel with a meter",
+   "credit": "public-domain",
+   "cropped": true,
+   "background": true
+  },
+  "header-types": {
+   "src": "/headers/header-types.webp",
+   "width": 1920,
+   "height": 1285,
+   "alt": "Engineers inspecting electrical switchgear cabinets",
+   "credit": "public-domain",
+   "cropped": true,
+   "background": true
+  },
+  "header-guides": {
+   "src": "/headers/header-guides.webp",
+   "width": 1920,
+   "height": 1278,
+   "alt": "Engineer in a hard hat checking plant equipment",
+   "credit": "public-domain",
+   "cropped": true,
+   "background": true
+  },
+  "header-how": {
+   "src": "/headers/header-how.webp",
+   "width": 1920,
+   "height": 972,
+   "alt": "Warehouse with racks and a forklift, softly blurred",
+   "credit": "public-domain",
+   "cropped": true,
+   "background": true
+  }
+ },
+ "credits": {
+  "phoenix-contact": {
+   "title": "Phoenix Contact product images",
+   "page": "https://www.phoenixcontact.com",
+   "license": "© Phoenix Contact",
+   "licenseUrl": "",
+   "artist": "Phoenix Contact"
+  },
+  "public-domain": {
+   "title": "Public domain photo",
+   "page": "",
+   "license": "Public domain",
+   "licenseUrl": "",
+   "artist": ""
+  }
+ }
+}

@@ -1,0 +1,122 @@
+{
+  "id": "double-level-terminal-blocks-wiring-5b07d3",
+  "keyword": "double level terminal block wiring",
+  "status": "approved",
+  "source": "manual",
+  "createdBy": "desk",
+  "createdAt": "2026-11-24T13:00:00.000Z",
+  "updatedAt": "2026-11-24T15:00:00.000Z",
+  "publishedAt": "2026-11-24T15:00:00.000Z",
+  "guide": {
+    "slug": "double-level-terminal-block-wiring",
+    "title": "Double-level terminal blocks: wiring tips and when to use them",
+    "shortTitle": "Double-level blocks",
+    "description": "When double-level terminal blocks save space, how to wire both levels cleanly, and how to check which levels are connected inside the block",
+    "category": "Selection",
+    "readMinutes": 4,
+    "updated": "2026-11-24",
+    "published": "2026-11-24",
+    "related": [
+      "multi-level",
+      "push-in",
+      "accessories"
+    ],
+    "keyTakeaways": [
+      "Double-level blocks put two circuits in the width of one",
+      "Wire the lower level first, then the upper level",
+      "Check the datasheet diagram to see whether the levels are isolated or bridged"
+    ],
+    "body": [
+      {
+        "type": "p",
+        "text": "Double-level terminal blocks stack two connection levels in one housing, so a single rail position carries two circuits. They roughly halve the rail length needed for a strip, which is why they are popular for PLC I/O, sensor wiring and crowded enclosures."
+      },
+      {
+        "type": "h2",
+        "text": "When they make sense"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The enclosure is short on rail space",
+          "Circuits come in natural pairs, such as signal and common",
+          "Sensors need a supply, a signal and sometimes a ground in one place",
+          "You want a compact interface between field wiring and a PLC"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "For power wiring, or where technicians need easy access to every connection, single-level blocks are often the better choice. Upper levels are harder to reach and harder to read once the wiring duct is full."
+      },
+      {
+        "type": "h2",
+        "text": "Isolated or bridged levels"
+      },
+      {
+        "type": "p",
+        "text": "Some double-level blocks keep the two levels electrically separate. Others connect them inside the housing, or offer a version with a built-in bridge. Ground versions connect one or both levels to the DIN rail. The wiring diagram printed in the datasheet shows exactly which points are connected. Check it before you wire, because two blocks that look alike can behave differently."
+      },
+      {
+        "type": "h2",
+        "text": "Wiring tips"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Wire the lower level first, then the upper level, so you can still see and reach each entry",
+          "Strip conductors to the length in the datasheet so no bare copper shows above the housing",
+          "Route upper-level wires so they don't cover lower-level markers",
+          "Mark both levels, since each one is a separate circuit point",
+          "Use the jumpers made for each level; they are often different parts"
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Ordering tip",
+        "text": "End plates for double-level blocks are specific to the profile. When you order a strip, include the matching end plate and the jumpers for each level, or the strip can't be completed on site."
+      },
+      {
+        "type": "h2",
+        "text": "Planning the strip"
+      },
+      {
+        "type": "p",
+        "text": "Before ordering, sketch which circuit lands on which level. Keep related circuits on the same level along the strip so jumpers can run straight, and leave a few spare positions for future I/O. Count the end plates and the level-specific jumpers from that sketch."
+      },
+      {
+        "type": "h2",
+        "text": "Three-level and sensor blocks"
+      },
+      {
+        "type": "p",
+        "text": "Three-level blocks go further, often combining supply, signal and ground for one sensor in a single position. Some versions add an LED or diode. They save even more space, but they also make the strip denser to work in, so plan wiring and marking carefully."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Are the two levels of a double-level terminal block connected?",
+        "a": "It depends on the part. Some are isolated, some are bridged internally. The wiring diagram in the datasheet shows which points connect."
+      },
+      {
+        "q": "Do double-level blocks carry less current than single-level blocks?",
+        "a": "Each level has its own rating, given in the datasheet. Don't assume it matches a single-level block of the same size."
+      },
+      {
+        "q": "Can I use a double-level block for ground?",
+        "a": "Yes. Ground versions connect to the DIN rail through the mounting foot. Check which levels are bonded to the rail."
+      }
+    ]
+  },
+  "factCheck": [
+    "Double-level blocks roughly halve rail length: generally true, confirm wording",
+    "Ground versions bond one or both levels to the rail: varies by product",
+    "Jumpers for upper and lower levels are often different parts"
+  ],
+  "reviewNote": "Demo article written for the design preview",
+  "history": [
+    {
+      "at": "2026-11-24T15:00:00.000Z",
+      "note": "Demo article added and approved for the local preview"
+    }
+  ]
+}

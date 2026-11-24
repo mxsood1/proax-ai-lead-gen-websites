@@ -1,0 +1,25 @@
+# dependencies and build output
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# secrets and local settings: never commit
+.env
+.env.*
+!.env.example
+
+# local data (leads, uploads, email outbox)
+.data/
+apps/*/.data/
+
+# old local catalog exports (no longer used)
+apps/*/src/data/generated/
+
+# Vercel
+.vercel/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log

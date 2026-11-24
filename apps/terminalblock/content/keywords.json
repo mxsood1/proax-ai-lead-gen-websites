@@ -1,0 +1,22 @@
+[
+  { "keyword": "push in vs spring vs screw terminal blocks", "intent": "comparison", "priority": 1, "coveredBy": "push-in-vs-spring-vs-screw-terminal-blocks" },
+  { "keyword": "how to size a terminal block", "intent": "informational", "priority": 1, "coveredBy": "how-to-size-a-terminal-block" },
+  { "keyword": "terminal block accessories end plate end stop jumper", "intent": "informational", "priority": 2, "coveredBy": "terminal-block-accessories-checklist" },
+  { "keyword": "terminal block colours meaning grey blue green yellow", "intent": "informational", "priority": 1 },
+  { "keyword": "din rail types 35 x 7.5 vs 35 x 15", "intent": "comparison", "priority": 1 },
+  { "keyword": "do you need ferrules for terminal blocks", "intent": "informational", "priority": 1 },
+  { "keyword": "ground terminal block din rail", "intent": "transactional", "priority": 2 },
+  { "keyword": "fuse terminal block 5x20 with led indicator", "intent": "transactional", "priority": 2 },
+  { "keyword": "disconnect terminal block for testing", "intent": "informational", "priority": 2 },
+  { "keyword": "double level terminal block wiring", "intent": "informational", "priority": 2 },
+  { "keyword": "terminal block markers how to label", "intent": "informational", "priority": 3 },
+  { "keyword": "pcb terminal block pitch 5.0 vs 5.08", "intent": "comparison", "priority": 2 },
+  { "keyword": "terminal block current rating ul vs iec", "intent": "informational", "priority": 2 },
+  { "keyword": "obsolete terminal block replacement", "intent": "transactional", "priority": 1 },
+  { "keyword": "phoenix contact ut 4 equivalent", "intent": "transactional", "priority": 2 },
+  { "keyword": "wago vs phoenix contact terminal blocks", "intent": "comparison", "priority": 2 },
+  { "keyword": "terminal block supplier canada", "intent": "transactional", "priority": 1 },
+  { "keyword": "terminal block jumper bridge how to use", "intent": "informational", "priority": 3 },
+  { "keyword": "terminal block wire size chart awg mm2", "intent": "informational", "priority": 1 },
+  { "keyword": "high current power distribution terminal blocks", "intent": "informational", "priority": 3 }
+]

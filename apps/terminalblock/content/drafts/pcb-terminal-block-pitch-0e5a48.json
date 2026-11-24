@@ -1,0 +1,140 @@
+{
+  "id": "pcb-terminal-block-pitch-0e5a48",
+  "keyword": "pcb terminal block pitch 5.0 vs 5.08",
+  "status": "draft",
+  "source": "manual",
+  "createdBy": "desk",
+  "createdAt": "2026-11-24T14:00:00.000Z",
+  "updatedAt": "2026-11-24T14:00:00.000Z",
+  "guide": {
+    "slug": "pcb-terminal-block-pitch-5-0-vs-5-08",
+    "title": "PCB terminal block pitch: 5.0 mm vs 5.08 mm explained",
+    "shortTitle": "PCB pitch 5.0 vs 5.08",
+    "description": "Why 5.0 mm and 5.08 mm PCB terminal blocks don't fit each other's footprint, how to measure pitch, and what to check before ordering",
+    "category": "Selection",
+    "readMinutes": 4,
+    "updated": "2026-11-24",
+    "related": [
+      "pcb",
+      "screw-clamp",
+      "push-in"
+    ],
+    "keyTakeaways": [
+      "5.08 mm is 0.2 inch; 5.0 mm is a metric pitch, and the two are not interchangeable",
+      "The difference adds up with every position, so longer blocks won't fit",
+      "Measure across many pins and divide, rather than measuring one gap"
+    ],
+    "body": [
+      {
+        "type": "p",
+        "text": "Pitch is the distance between the centres of neighbouring pins on a PCB terminal block. 5.08 mm equals 0.2 inch and comes from inch-based board layouts, while 5.0 mm is a metric pitch. They look almost the same, but a 5.0 mm block will not fit a 5.08 mm footprint once you have more than a few positions."
+      },
+      {
+        "type": "h2",
+        "text": "Why the small difference matters"
+      },
+      {
+        "type": "p",
+        "text": "The gap is only 0.08 mm per position, but it adds up. Across a 10-position block there are nine gaps, so the outer pins are 0.72 mm apart from where the footprint expects them. That is enough to stop the block from going into the board, or to stress the solder joints if it is forced in."
+      },
+      {
+        "type": "table",
+        "head": [
+          "Positions",
+          "Extra length (5.08 vs 5.0)"
+        ],
+        "rows": [
+          [
+            "2",
+            "0.08 mm"
+          ],
+          [
+            "4",
+            "0.24 mm"
+          ],
+          [
+            "6",
+            "0.40 mm"
+          ],
+          [
+            "10",
+            "0.72 mm"
+          ],
+          [
+            "12",
+            "0.88 mm"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Common PCB terminal block pitches"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "2.54 mm (0.1 in) and 3.5 mm for small signal connections",
+          "3.81 mm (0.15 in) for compact pluggable connectors",
+          "5.0 mm and 5.08 mm (0.2 in) for general-purpose connections",
+          "7.5 mm, 7.62 mm (0.3 in) and larger for higher voltage and current"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "How to measure pitch"
+      },
+      {
+        "type": "p",
+        "text": "Measuring one gap with calipers rarely tells 5.0 and 5.08 apart. Instead, measure from the centre of the first pin to the centre of the last pin and divide by the number of gaps, which is one less than the number of positions. A 10-position block measuring about 45.7 mm between the outer pins is 5.08 mm pitch; one measuring 45.0 mm is 5.0 mm."
+      },
+      {
+        "type": "callout",
+        "title": "Plugs and headers",
+        "text": "For pluggable blocks, the plug and the header must be the same pitch and the same family. Plugs from different families can have the same pitch but different locking or coding, so order both halves from one series."
+      },
+      {
+        "type": "h2",
+        "text": "Fixed or pluggable"
+      },
+      {
+        "type": "p",
+        "text": "Fixed PCB terminal blocks are soldered straight to the board and are the lowest-cost option. Pluggable blocks split into a header on the board and a plug that carries the field wiring, so a device can be swapped without disconnecting conductors. They cost a little more, but save time wherever boards are replaced in the field."
+      },
+      {
+        "type": "h2",
+        "text": "What to put on your RFQ"
+      },
+      {
+        "type": "p",
+        "text": "List the pitch, the number of positions, fixed or pluggable, the wire entry direction, and whether the board uses through-hole or surface-mount pins. If you are replacing an existing part, include the manufacturer and part number printed on the block."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is 5.08 mm pitch the same as 0.2 inch?",
+        "a": "Yes. 0.2 inch is exactly 5.08 mm, which is why 5.08 mm pitch is common on inch-based board layouts."
+      },
+      {
+        "q": "Will a 2-position 5.0 mm block fit a 5.08 mm footprint?",
+        "a": "A 2-position block is only 0.08 mm off and often fits, but it is still the wrong part. Use the pitch the board was designed for."
+      },
+      {
+        "q": "Can I mix plugs and headers from different manufacturers?",
+        "a": "Only if the manufacturer states they are compatible. Pitch alone doesn't guarantee the locking, coding and contact design match."
+      }
+    ]
+  },
+  "factCheck": [
+    "0.2 in = 5.08 mm exactly",
+    "Cumulative offsets in the table (0.08 mm per gap)",
+    "10-position outer pin spacing: 9 x 5.08 = 45.72 mm, 9 x 5.0 = 45.0 mm",
+    "Pitch families listed are common, not exhaustive"
+  ],
+  "reviewNote": "Demo article left in the review queue for the design preview",
+  "history": [
+    {
+      "at": "2026-11-24T14:00:00.000Z",
+      "note": "Demo article added to the review queue"
+    }
+  ]
+}

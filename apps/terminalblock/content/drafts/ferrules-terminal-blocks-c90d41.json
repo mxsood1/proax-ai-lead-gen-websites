@@ -1,0 +1,148 @@
+{
+  "id": "ferrules-terminal-blocks-c90d41",
+  "keyword": "do you need ferrules for terminal blocks",
+  "status": "draft",
+  "source": "manual",
+  "createdAt": "2026-11-13T00:00:00.000Z",
+  "updatedAt": "2026-11-13T00:00:00.000Z",
+  "guide": {
+    "slug": "ferrules-for-terminal-blocks",
+    "title": "Do you need ferrules for terminal blocks?",
+    "shortTitle": "Ferrules",
+    "description": "When stranded wire needs ferrules, how ferrules change a terminal block's conductor range, and how to choose ferrule size, length and crimp",
+    "category": "Checklist",
+    "readMinutes": 5,
+    "updated": "2026-11-13",
+    "keyTakeaways": [
+      "Ferrules keep fine-stranded wire from splaying in the clamp",
+      "With push-in blocks, ferrules let you insert stranded wire without opening the clamp",
+      "The block's datasheet lists approved conductor sizes with and without ferrules"
+    ],
+    "body": [
+      {
+        "type": "p",
+        "text": "A ferrule, or wire end sleeve, is a metal tube crimped onto the end of a stranded conductor. Ferrules are not always required, but in many panels they are the standard because they make terminations faster and more consistent."
+      },
+      {
+        "type": "h2",
+        "text": "Why panel builders use them"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Stray strands can't splay outside the clamp",
+          "Push-in blocks accept ferruled wire without pressing the release",
+          "Terminations look and test the same across the panel"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "When to check the datasheet"
+      },
+      {
+        "type": "p",
+        "text": "Terminal block ratings list conductor ranges separately for solid, stranded and ferruled wire. Insulated ferrules with a plastic collar can reduce the largest wire a clamp will accept, so check the ferruled range before choosing a block size."
+      },
+      {
+        "type": "p",
+        "text": "A ferrule is not a way around the block size. If a ferruled conductor sits at the very top of a block's range, step up to the next block size rather than forcing the wire in, so the clamp holds it with the rated force."
+      },
+      {
+        "type": "h2",
+        "text": "Picking the right ferrule"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Match the ferrule to the conductor cross-section",
+          "Choose a sleeve length that suits the clamp depth listed by the block manufacturer",
+          "Use twin ferrules when two conductors share one clamp point",
+          "Crimp with the correct tool and profile for the ferrule type"
+        ]
+      },
+      {
+        "type": "callout",
+        "title": "Watch the colour code",
+        "text": "Insulated ferrules come in more than one colour-coding system, so the same colour can mean different sizes from different suppliers. Specify the cross-section, not just the colour."
+      },
+      {
+        "type": "h2",
+        "text": "Ferrule size by wire size"
+      },
+      {
+        "type": "p",
+        "text": "Ferrules are sized by conductor cross-section. Order the size that matches the wire, not the terminal block."
+      },
+      {
+        "type": "table",
+        "head": [
+          "Wire",
+          "Ferrule size"
+        ],
+        "rows": [
+          [
+            "20 AWG",
+            "0.5 mm²"
+          ],
+          [
+            "18 AWG",
+            "0.75 mm² or 1 mm²"
+          ],
+          [
+            "16 AWG",
+            "1.5 mm²"
+          ],
+          [
+            "14 AWG",
+            "2.5 mm²"
+          ],
+          [
+            "12 AWG",
+            "4 mm²"
+          ],
+          [
+            "10 AWG",
+            "6 mm²"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Ferrules with push-in blocks"
+      },
+      {
+        "type": "p",
+        "text": "A ferruled stranded wire can be pushed straight into a push-in block, as long as the ferrule is the right size and crimped evenly. A crimp that leaves the ferrule bent or unevenly flattened may not seat fully, so use a crimp profile the block manufacturer accepts, such as a square or trapezoid crimp."
+      },
+      {
+        "type": "h2",
+        "text": "Sourcing tip"
+      },
+      {
+        "type": "p",
+        "text": "Ferrules are ordered by cross-section, sleeve length and insulation. When you order terminal blocks for a new panel, add the ferrule sizes to the same RFQ, and the crimp tool if your team needs one."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Are ferrules required by code?",
+        "a": "Not universally. Requirements depend on the standard, the terminal's approvals and the customer's specification. Many builders use them as standard practice."
+      },
+      {
+        "q": "Can I solder the wire end instead?",
+        "a": "Soldered (tinned) wire ends are generally not recommended in screw clamps, because the solder can creep under pressure and loosen the connection. Use ferrules instead."
+      }
+    ],
+    "related": [
+      "push-in",
+      "spring-clamp",
+      "screw-clamp"
+    ]
+  },
+  "factCheck": [
+    "Two insulated-ferrule colour systems (e.g. DIN 46228-4 and the 'French' code): confirm naming before publishing",
+    "Soldered wire ends not recommended in screw clamps due to cold flow: confirm wording against manufacturer guidance",
+    "Insulated ferrules can reduce the maximum accepted conductor size: confirm with sample datasheets"
+  ],
+  "reviewNote": "Demo article left in the review queue for the design preview"
+}

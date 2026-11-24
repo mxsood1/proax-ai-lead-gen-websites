@@ -1,0 +1,114 @@
+{
+  "_about": "Registry of the nine Proax sourcing sites. One entry per domain. Used by the catalog export (search terms) and as the brief for building each next site. Order = suggested build order.",
+  "operator": "Proax Technologies Ltd.",
+  "sites": [
+    {
+      "id": "terminalblock",
+      "domain": "terminalblock.ca",
+      "name": "TerminalBlock.ca",
+      "rfqPrefix": "TB",
+      "status": "built (local, awaiting approval)",
+      "category": "Terminal blocks and accessories",
+      "p21": { "include": ["terminal block", "term block", "term. block", "terminal blk", "term blk", "feed-through terminal", "feed through terminal", "ground terminal", "fuse terminal", "disconnect terminal", "din rail terminal"] },
+      "tool": "Terminal block finder + photo / part-number identifier",
+      "signature": "Printed terminal marker tags",
+      "world": "Inside a control cabinet: DIN rail, grey/blue/green-yellow blocks"
+    },
+    {
+      "id": "contactors",
+      "domain": "contactors.ca",
+      "name": "Contactors.ca",
+      "rfqPrefix": "CT",
+      "status": "planned",
+      "category": "Contactors, motor starters and accessories",
+      "p21": { "include": ["contactor", "motor starter", "auxiliary contact", "overload relay"] },
+      "tool": "Contactor cross-reference finder (coil voltage, AC-3 rating, frame size)",
+      "signature": "Coil-voltage tags (24 VDC, 120 VAC) on every part",
+      "world": "Motor control centres and starter panels"
+    },
+    {
+      "id": "safetyrelays",
+      "domain": "safetyrelays.ca",
+      "name": "SafetyRelays.ca",
+      "rfqPrefix": "SR",
+      "status": "planned",
+      "category": "Safety relays and safety controllers",
+      "p21": { "include": ["safety relay", "safety module", "safety controller", "e-stop relay", "emergency stop relay"] },
+      "tool": "Safety relay comparison tool (inputs, outputs, PL/SIL, reset type)",
+      "signature": "Performance level badge (PL d / PL e) shown as quiet text",
+      "world": "Machine guarding and emergency-stop circuits"
+    },
+    {
+      "id": "safetyswitches",
+      "domain": "safetyswitches.ca",
+      "name": "SafetySwitches.ca",
+      "rfqPrefix": "SS",
+      "status": "planned",
+      "category": "Safety interlock, door and hinge switches",
+      "p21": { "include": ["safety switch", "interlock switch", "safety interlock", "door switch", "hinge switch", "guard locking"] },
+      "tool": "Safety switch finder (guard type, coding level, locking)",
+      "signature": "Coding level markers (low / high)",
+      "world": "Machine guard doors and fencing"
+    },
+    {
+      "id": "safetylightcurtains",
+      "domain": "safetylightcurtains.ca",
+      "name": "SafetyLightCurtains.ca",
+      "rfqPrefix": "LC",
+      "status": "planned",
+      "category": "Safety light curtains and grids",
+      "p21": { "include": ["light curtain", "safety light", "light grid", "muting"] },
+      "tool": "Light curtain selection assistant (resolution, protective height, safety distance)",
+      "signature": "Beam lines and resolution tags (14 mm / 30 mm)",
+      "world": "Press brakes, robot cells and conveyors"
+    },
+    {
+      "id": "solidstaterelays",
+      "domain": "solidstaterelays.ca",
+      "name": "SolidStateRelays.ca",
+      "rfqPrefix": "SSR",
+      "status": "planned",
+      "category": "Solid state relays and heat sinks",
+      "p21": { "include": ["solid state relay", "ssr", "solid-state relay"] },
+      "tool": "Relay replacement finder (load current, voltage, switching type, heat sink)",
+      "signature": "Load-current tags",
+      "world": "Heater and process control panels"
+    },
+    {
+      "id": "upspowersupply",
+      "domain": "upspowersupply.ca",
+      "name": "UPSPowerSupply.ca",
+      "rfqPrefix": "UPS",
+      "status": "planned",
+      "category": "DIN-rail power supplies and DC UPS",
+      "p21": { "include": ["power supply", "dc ups", "ups module", "buffer module", "battery module"] },
+      "tool": "UPS sizing calculator (load, hold-up time, battery size)",
+      "signature": "Output-voltage and hold-up-time tags",
+      "world": "24 VDC control power"
+    },
+    {
+      "id": "actuators",
+      "domain": "actuators.ca",
+      "name": "Actuators.ca",
+      "rfqPrefix": "ACT",
+      "status": "planned",
+      "category": "Electric and pneumatic actuators",
+      "p21": { "include": ["actuator", "cylinder", "linear actuator", "rotary actuator"] },
+      "tool": "Actuator selection tool (stroke, force, speed, mounting)",
+      "signature": "Stroke and bore tags",
+      "world": "Motion on the machine floor"
+    },
+    {
+      "id": "pneumaticvalves",
+      "domain": "pneumaticvalves.ca",
+      "name": "PneumaticValves.ca",
+      "rfqPrefix": "PV",
+      "status": "planned",
+      "category": "Pneumatic valves and manifolds",
+      "p21": { "include": ["solenoid valve", "pneumatic valve", "valve manifold", "5/2 valve", "3/2 valve"] },
+      "tool": "Pneumatic valve identification tool (ports, function, voltage, manifold)",
+      "signature": "Valve function symbols (5/2, 3/2)",
+      "world": "Compressed-air manifolds and machine pneumatics"
+    }
+  ]
+}

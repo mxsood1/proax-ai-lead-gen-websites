@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   TerminalBlock.ca design tokens
+
+   Direction (unslop pass)
+   - Product: one RFQ desk for Canadian panel builders and maintenance
+     teams sourcing terminal blocks.
+   - Character: exact, practical, workshop-warm.
+   - World: the inside of a control cabinet — DIN rail, grey / blue /
+     green-yellow blocks, printed markers.
+   - Moments: the rendered DIN-rail assembly, and real part numbers.
+   - Signature: white printed "marker" tags in mono (see .marker).
+
+   Chrome stays quiet: one warm neutral ramp, three text roles and a
+   single accent (the push-in release orange, darkened for contrast).
+   The real terminal-block colours live only inside the rendered blocks.
+------------------------------------------------------------------- */
+@theme {
+  /* warm light ramp */
+  --color-paper: #f6f3ec; /* page */
+  --color-paper-2: #eee9df; /* raised: inputs, active rows */
+  --color-paper-3: #e3ddd1;
+  --color-line: #e0d9cc; /* hairline */
+
+  /* warm dark ramp (dark surfaces) + text roles on light */
+  --color-ink: #1b1915; /* primary text / darkest surface */
+  --color-ink-2: #221f1b; /* card on dark */
+  --color-ink-3: #2d2a25; /* raised on dark */
+  --color-ink-4: #5e554a; /* secondary text on light */
+  --color-steel: #7b7266; /* muted text and icons on light */
+  --color-steel-light: #c3bcb0;
+
+  /* one accent: 5.2:1 with white text */
+  --color-signal: #c2410c;
+  --color-signal-dark: #9a3412;
+  --color-signal-soft: #f8e6db;
+
+  /* terminal-block material colours (objects only) */
+  --color-tb-grey: #b8bdc4;
+  --color-tb-blue: #2f6fd6;
+  --color-tb-green: #2c9a47;
+  --color-tb-yellow: #f2c418;
+
+  /* semantic, toned to the palette */
+  --color-ok: #16a34a;
+  --color-bad: #dc2626;
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /* one easing curve everywhere */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-snap-in: snap-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-up: fade-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-scan: scan 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  --animate-marquee: marquee var(--marquee-duration, 60s) linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes snap-in {
+    from {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes scan {
+    0% {
+      top: 4%;
+    }
+    50% {
+      top: 92%;
+    }
+    100% {
+      top: 4%;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 0;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* One icon stroke everywhere */
+svg.lucide {
+  stroke-width: 1.5;
+}
+
+/* Dark surfaces: flat warm ink, depth from surface steps — no grids, no glow */
+.blueprint {
+  background-color: var(--color-ink);
+}
+
+/* Kept as a hook for the product drawings only; no pattern on page sections */
+.paper-grid {
+  background-image: none;
+}
+
+/* Signature: a printed terminal marker tag — white, hairline, mono */
+.marker {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: #fbfaf7;
+  color: var(--color-ink);
+  box-shadow: inset 0 0 0 1px rgb(27 25 21 / 0.14);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ground-stripes {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-tb-yellow) 0 0.55em,
+    var(--color-tb-green) 0.55em 1.1em
+  );
+}
+
+.din-rail {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 18px,
+      rgba(0, 0, 0, 0.32) 18px 46px,
+      transparent 46px 64px
+    ) center / 100% 34% no-repeat,
+    linear-gradient(180deg, #eef0f2 0%, #b3b9c1 22%, #dfe2e6 50%, #9aa1aa 80%, #6f7680 100%);
+}
+
+/* Prose styles for guides */
+.prose-tb h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 2.5rem 0 0.75rem;
+}
+.prose-tb h3 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 1.75rem 0 0.5rem;
+}
+.prose-tb p {
+  line-height: 1.75;
+  margin: 0 0 1rem;
+  color: var(--color-ink-4);
+}
+.prose-tb ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+}
+.prose-tb li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.65;
+  color: var(--color-ink-4);
+}
+.prose-tb li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.7em;
+  width: 6px;
+  height: 1px;
+  background: var(--color-steel);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

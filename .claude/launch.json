@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "terminalblock",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "apps/terminalblock", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}

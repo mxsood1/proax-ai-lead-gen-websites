@@ -1,0 +1,141 @@
+{
+  "id": "din-rail-types-b72f10",
+  "keyword": "din rail types 35 x 7.5 vs 35 x 15",
+  "status": "approved",
+  "source": "manual",
+  "createdAt": "2026-11-13T00:00:00.000Z",
+  "updatedAt": "2026-10-13T15:00:00.000Z",
+  "guide": {
+    "slug": "din-rail-types",
+    "title": "DIN rail types: 35 × 7.5, 35 × 15 and 15 mm explained",
+    "shortTitle": "DIN rail types",
+    "description": "How to choose DIN rail for terminal blocks: 35 × 7.5 vs 35 × 15 mm top-hat rail, 15 mm miniature rail, materials and ground block approvals",
+    "category": "Selection",
+    "readMinutes": 4,
+    "updated": "2026-10-13",
+    "keyTakeaways": [
+      "35 × 7.5 mm top-hat rail fits most terminal blocks",
+      "35 × 15 mm deep rail adds strength for heavy or large components",
+      "Check that ground blocks are approved for your rail's profile and material"
+    ],
+    "body": [
+      {
+        "type": "p",
+        "text": "Almost every modular terminal block clips onto a DIN rail. The rail dimensions are standardized (EN 60715), so blocks from different manufacturers fit the same rail. The profile you choose still affects strength, depth and grounding."
+      },
+      {
+        "type": "h2",
+        "text": "The common profiles"
+      },
+      {
+        "type": "table",
+        "head": [
+          "Rail",
+          "Typical use"
+        ],
+        "rows": [
+          [
+            "35 × 7.5 mm top hat",
+            "The default for terminal blocks, relays and small devices"
+          ],
+          [
+            "35 × 15 mm top hat",
+            "Deeper and stiffer, for heavier components and long unsupported spans"
+          ],
+          [
+            "15 mm miniature",
+            "Small terminal blocks in compact enclosures"
+          ],
+          [
+            "G rail (G32)",
+            "Older asymmetric profile, still found in legacy panels"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Material and finish"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Zinc-plated steel is the common general-purpose choice",
+          "Aluminium is lighter but less stiff",
+          "Copper rail is used where the rail itself must carry earth current"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Slotted (perforated) rail is easier to mount and lighter. Solid rail is stiffer and suits heavy loads."
+      },
+      {
+        "type": "p",
+        "text": "If you are matching an existing panel, measure the rail height. 7.5 mm and 15 mm rail look the same from the front, but the depth changes how far every device stands off the back plate, and mixing them in one row leaves devices out of line."
+      },
+      {
+        "type": "callout",
+        "title": "Ground blocks and the rail",
+        "text": "Ground (PE) terminal blocks bond to earth through the rail, so the manufacturer lists the rail profiles and materials each one is approved for. Check that list, and make sure the rail is bonded to the enclosure's earth."
+      },
+      {
+        "type": "h2",
+        "text": "How to choose"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Use 35 × 7.5 mm rail unless heavy devices or long unsupported spans call for 35 × 15 mm",
+          "Check device depth against the enclosure door, since deep rail adds 7.5 mm",
+          "Match the rail profile and material to the approval list of your ground blocks",
+          "Leave room on each strip for end stops, markers and a few spare positions"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Fixing and cutting rail"
+      },
+      {
+        "type": "p",
+        "text": "Fix the rail to the back plate at regular intervals so it doesn't flex while blocks are wired. Long strips of heavy blocks need fixing points closer together. Cut rail with a rail cutter or a fine saw, deburr the ends, and fit an end stop at both ends of every strip so blocks can't slide along the rail."
+      },
+      {
+        "type": "h2",
+        "text": "Sourcing tip"
+      },
+      {
+        "type": "p",
+        "text": "Rail is usually sold in 1 m or 2 m lengths. Include the profile, material, slotted or solid, and length in your RFQ, along with end stops for each strip."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Will terminal blocks from different brands fit the same rail?",
+        "a": "Yes, on the same standardized profile. Accessories such as jumpers and end plates are still brand and series specific."
+      },
+      {
+        "q": "Can I mount 35 mm blocks on a 15 mm rail?",
+        "a": "No. Choose blocks designed for the rail profile you are using."
+      }
+    ],
+    "related": [
+      "accessories",
+      "ground",
+      "screw-clamp"
+    ],
+    "published": "2026-10-13"
+  },
+  "factCheck": [
+    "EN 60715 as the standard defining DIN rail dimensions (35 × 7.5, 35 × 15, 15 mm, G32): confirm current designation",
+    "15 mm miniature rail dimensions (15 × 5.5 mm): confirm",
+    "Copper rail used for carrying earth current: confirm typical use statement",
+    "Standard rail lengths of 1 m and 2 m: confirm against the catalog"
+  ],
+  "publishedAt": "2026-10-13T15:00:00.000Z",
+  "reviewNote": "Demo article written for the design preview",
+  "history": [
+    {
+      "at": "2026-10-13T15:00:00.000Z",
+      "note": "Demo article approved for the local preview"
+    }
+  ]
+}

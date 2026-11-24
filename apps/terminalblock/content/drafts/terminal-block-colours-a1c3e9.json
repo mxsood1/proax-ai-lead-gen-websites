@@ -1,0 +1,136 @@
+{
+  "id": "terminal-block-colours-a1c3e9",
+  "keyword": "terminal block colours meaning grey blue green yellow",
+  "status": "approved",
+  "source": "manual",
+  "createdAt": "2026-11-13T00:00:00.000Z",
+  "updatedAt": "2026-10-20T15:00:00.000Z",
+  "guide": {
+    "slug": "terminal-block-colours",
+    "title": "Terminal block colours: what grey, blue and green-yellow mean",
+    "shortTitle": "Terminal block colours",
+    "description": "What common terminal block colours mean, from grey and blue to green-yellow ground and orange, and why your panel standard always comes first",
+    "category": "Selection",
+    "readMinutes": 4,
+    "updated": "2026-10-20",
+    "keyTakeaways": [
+      "Green-yellow is reserved for protective earth",
+      "Blue commonly marks neutral, grey or beige marks general circuits",
+      "Your customer's or shop's panel standard overrides any general convention"
+    ],
+    "body": [
+      {
+        "type": "p",
+        "text": "Terminal block colours make a panel easier to wire, check and maintain. Most manufacturers offer the same blocks in several colours, so choosing the right one is part of specifying the strip. Here are the conventions you will see most often."
+      },
+      {
+        "type": "h2",
+        "text": "Common colours"
+      },
+      {
+        "type": "table",
+        "head": [
+          "Colour",
+          "Typical use"
+        ],
+        "rows": [
+          [
+            "Grey or beige",
+            "General feed-through blocks for line, control and signal circuits"
+          ],
+          [
+            "Blue",
+            "Neutral conductors; some industries also use blue for intrinsically safe circuits"
+          ],
+          [
+            "Green-yellow",
+            "Protective earth (PE) blocks that bond to the DIN rail"
+          ],
+          [
+            "Orange",
+            "Circuits that can stay live from an external source when the main disconnect is off"
+          ],
+          [
+            "Red and black",
+            "Often used to mark DC positive and negative distribution"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Green-yellow is special"
+      },
+      {
+        "type": "p",
+        "text": "Green-yellow is reserved for protective earth. Ground terminal blocks in this colour are designed to make contact with the DIN rail through the mounting foot. Do not use green-yellow blocks for any other purpose, and make sure the rail itself is properly bonded."
+      },
+      {
+        "type": "h2",
+        "text": "Why orange blocks matter"
+      },
+      {
+        "type": "p",
+        "text": "A circuit fed from outside the panel, such as an interlock from another machine, may stay energized when the panel's main disconnect is open. Marking these terminals clearly, often with orange blocks or orange conductors, warns anyone working in the panel."
+      },
+      {
+        "type": "callout",
+        "title": "Your standard comes first",
+        "text": "Colour conventions vary between standards, industries and companies. In North America, follow the electrical code, NFPA 79 or CSA requirements and the customer's specification for the job. When in doubt, follow the drawings."
+      },
+      {
+        "type": "h2",
+        "text": "Markers as well as colour"
+      },
+      {
+        "type": "p",
+        "text": "Colour narrows things down, but every terminal still needs a marker. Printed markers carry the terminal or wire number from the drawings, so a technician can trace a circuit without guessing. Many shops use colour for a conductor's role and markers for its exact identity."
+      },
+      {
+        "type": "h2",
+        "text": "Matching accessories"
+      },
+      {
+        "type": "p",
+        "text": "Jumpers, end plates and markers are often sold in several colours too. When you order coloured blocks, check whether the end plate and jumpers for that series come in the same colour or a neutral one, and put them on the same RFQ so the strip can be finished in one go."
+      },
+      {
+        "type": "h2",
+        "text": "Sourcing tip"
+      },
+      {
+        "type": "p",
+        "text": "Colour variants are separate part numbers. When you replace a strip, list the colour of each block in your RFQ so the replacement matches the original layout."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can I use a grey block for ground?",
+        "a": "No. Use a dedicated ground (PE) terminal block. It is designed to bond to the DIN rail, and its green-yellow colour identifies the protective earth for anyone working in the panel."
+      },
+      {
+        "q": "Are terminal block colours required by code?",
+        "a": "Some markings are required, such as identifying protective earth. Others are conventions. The applicable code, standard and customer specification decide what is mandatory for your panel."
+      }
+    ],
+    "related": [
+      "ground",
+      "push-in",
+      "accessories"
+    ],
+    "published": "2026-10-20"
+  },
+  "factCheck": [
+    "Blue for intrinsically safe circuits: confirm wording against IEC 60079-14 practice",
+    "Orange for externally supplied circuits: confirm against IEC 60204-1 and NFPA 79 wording",
+    "Red/black for DC distribution: presented as common practice, not a requirement; confirm phrasing",
+    "Ground blocks bond to the rail through the mounting foot: true for standard PE blocks; confirm no exceptions are implied"
+  ],
+  "publishedAt": "2026-10-20T15:00:00.000Z",
+  "reviewNote": "Demo article written for the design preview",
+  "history": [
+    {
+      "at": "2026-10-20T15:00:00.000Z",
+      "note": "Demo article approved for the local preview"
+    }
+  ]
+}
