@@ -2,6 +2,7 @@ import { existsSync, openSync, readSync, closeSync } from "node:fs";
 import path from "node:path";
 import type { CSSProperties } from "react";
 import { site } from "@/config/site";
+import { stripBrands } from "@/data/brands";
 import { cn } from "@/lib/cn";
 
 /**
@@ -91,14 +92,14 @@ async function loadBrands(names: readonly string[], showLogos: boolean) {
 }
 
 export async function BrandsMarquee() {
-  const brands = await loadBrands(site.brandsWeSource, site.showBrandLogos);
+  const brands = await loadBrands(stripBrands, site.showBrandLogos);
   // ~5 seconds per brand keeps the pace slow and steady whatever the list length
   const style = { "--marquee-duration": `${Math.max(30, brands.length * 5)}s` } as CSSProperties;
 
   return (
     <section className="border-b border-line bg-paper py-10" aria-labelledby="brands-heading">
       <p id="brands-heading" className="text-center text-sm text-steel">
-        Request quotes on parts from these manufacturers
+        Brands we compare
       </p>
       <div className="group relative mt-6 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
         <div

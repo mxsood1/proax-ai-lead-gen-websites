@@ -38,3 +38,6 @@ export function verifyDownloadToken(token: string, guideId: string, now = Date.n
 }
 
 export const readGuide = () => readFile(GUIDE.file);
+
+/** Download id for a brand comparison: the PDF is built from the brand data when the link is opened */
+export const comparisonId = (pair: string) => `cmp-${pair}`;

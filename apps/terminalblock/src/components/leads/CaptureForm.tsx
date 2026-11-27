@@ -19,10 +19,12 @@ type Props = {
   what: string;
   onSuccess: (data: Record<string, unknown>) => void;
   compact?: boolean;
+  /** Company is required by default; optional for the comparison PDF */
+  requireCompany?: boolean;
 };
 
 /** Email capture used by the guide download and "Email me this list". Consent is explicit; updates opt-in is separate and unticked (CASL). */
-export function CaptureForm({ endpoint, extra, submitLabel, what, onSuccess, compact }: Props) {
+export function CaptureForm({ endpoint, extra, submitLabel, what, onSuccess, compact, requireCompany = true }: Props) {
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [name, setName] = useState("");
@@ -41,7 +43,7 @@ export function CaptureForm({ endpoint, extra, submitLabel, what, onSuccess, com
     e.preventDefault();
     const local: string[] = [];
     if (!/^\S+@\S+\.\S+$/.test(email.trim())) local.push("Enter a valid email address.");
-    if (company.trim().length < 2) local.push("Company is required.");
+    if (requireCompany && company.trim().length < 2) local.push("Company is required.");
     if (!consent) local.push(`Please agree so we can send you ${what}.`);
     setErrors(local);
     if (local.length) return;
@@ -69,7 +71,7 @@ export function CaptureForm({ endpoint, extra, submitLabel, what, onSuccess, com
     <form onSubmit={submit} noValidate className="space-y-3">
       <div className={cn("grid gap-3", !compact && "sm:grid-cols-2")}>
         <input className={inputCls} type="email" autoComplete="email" placeholder="Work email *" value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Work email" />
-        <input className={inputCls} autoComplete="organization" placeholder="Company *" value={company} onChange={(e) => setCompany(e.target.value)} aria-label="Company" />
+        <input className={inputCls} autoComplete="organization" placeholder={requireCompany ? "Company *" : "Company"} value={company} onChange={(e) => setCompany(e.target.value)} aria-label="Company" />
         {!compact && <input className={inputCls} autoComplete="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} aria-label="Name" />}
         <select className={cn(inputCls, !role && "text-steel")} value={role} onChange={(e) => setRole(e.target.value)} aria-label="Your role">
           <option value="">Your role (optional)</option>
@@ -88,7 +90,7 @@ export function CaptureForm({ endpoint, extra, submitLabel, what, onSuccess, com
       <label className="flex cursor-pointer items-start gap-2.5 text-[13px] leading-snug text-ink-3">
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--color-signal)]" />
         <span>
-          Email me {what}. {site.name} and its featured supplier, {site.featuredSupplier.name}, may follow up about it. <span className="text-steel">*</span>
+          Email me {what}. {site.name} may follow up about it. <span className="text-steel">*</span>
         </span>
       </label>
       <label className="flex cursor-pointer items-start gap-2.5 text-[13px] leading-snug text-ink-4">

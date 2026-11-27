@@ -57,12 +57,28 @@
         ]
       },
       {
+        "type": "image",
+        "photos": [
+          "hero-grey",
+          "hero-blue",
+          "hero-pe"
+        ],
+        "caption": "Grey, blue and green-yellow versions of the same push-in block."
+      },
+      {
         "type": "h2",
         "text": "Green-yellow is special"
       },
       {
         "type": "p",
         "text": "Green-yellow is reserved for protective earth. Ground terminal blocks in this colour are designed to make contact with the DIN rail through the mounting foot. Do not use green-yellow blocks for any other purpose, and make sure the rail itself is properly bonded."
+      },
+      {
+        "type": "image",
+        "photos": [
+          "ground"
+        ],
+        "caption": "A green-yellow ground block connects to the rail through its foot."
       },
       {
         "type": "h2",
@@ -91,7 +107,7 @@
       },
       {
         "type": "p",
-        "text": "Jumpers, end plates and markers are often sold in several colours too. When you order coloured blocks, check whether the end plate and jumpers for that series come in the same colour or a neutral one, and put them on the same RFQ so the strip can be finished in one go."
+        "text": "Jumpers, end plates and markers are often sold in several colours too. When you order coloured blocks, check whether the end plate and jumpers for that series come in the same colour or a neutral one, and put them on the same order so the strip can be finished in one go."
       },
       {
         "type": "h2",
@@ -99,7 +115,7 @@
       },
       {
         "type": "p",
-        "text": "Colour variants are separate part numbers. When you replace a strip, list the colour of each block in your RFQ so the replacement matches the original layout."
+        "text": "Colour variants are separate part numbers. When you replace a strip, list the colour of each block on your order so the replacement matches the original layout."
       }
     ],
     "faqs": [

@@ -1,0 +1,163 @@
+{
+  "id": "phoenix-contact-vs-weidmuller-3e8a51",
+  "keyword": "phoenix contact vs weidmuller terminal blocks",
+  "status": "approved",
+  "source": "manual",
+  "createdBy": "desk",
+  "createdAt": "2026-11-26T14:00:00.000Z",
+  "updatedAt": "2026-11-26T15:00:00.000Z",
+  "publishedAt": "2026-11-26T15:00:00.000Z",
+  "guide": {
+    "slug": "phoenix-contact-vs-weidmuller-terminal-blocks",
+    "title": "Phoenix Contact vs Weidmüller terminal blocks: how the ranges compare",
+    "shortTitle": "Phoenix Contact vs Weidmüller",
+    "description": "How the two terminal block specialists line up for push-in, spring and screw blocks, and how to choose between them for your panel",
+    "category": "Comparison",
+    "readMinutes": 4,
+    "updated": "2026-11-26",
+    "published": "2026-11-26",
+    "keyTakeaways": [
+      "Both offer push-in, spring and screw ranges plus the special-function blocks most panels need",
+      "Phoenix Contact groups its ranges in one system (CLIPLINE complete); Weidmüller's is Klippon Connect",
+      "On an existing panel, stay with the brand and series already on the rail so the accessories fit"
+    ],
+    "body": [
+      {
+        "type": "p",
+        "text": "Phoenix Contact and Weidmüller are both German terminal block specialists, and both cover every common connection type and function. For most panels either will do the job. The differences that matter are in the details: series names, accessories and which blocks are already in your plant."
+      },
+      {
+        "type": "h2",
+        "text": "The ranges side by side"
+      },
+      {
+        "type": "table",
+        "head": [
+          "Type",
+          "Phoenix Contact",
+          "Weidmüller"
+        ],
+        "rows": [
+          [
+            "Push-in",
+            "PT series",
+            "A-Series"
+          ],
+          [
+            "Spring clamp",
+            "ST series",
+            "Z-Series (tension clamp)"
+          ],
+          [
+            "Screw clamp",
+            "UT series (UK on many older panels)",
+            "W-Series, e.g. WDU"
+          ],
+          [
+            "Double-level",
+            "PTTB, STTB, UTTB",
+            "e.g. WDK"
+          ],
+          [
+            "PCB connectors",
+            "COMBICON",
+            "OMNIMATE"
+          ]
+        ]
+      },
+      {
+        "type": "image",
+        "photos": [
+          "push-in",
+          "spring-clamp",
+          "screw-clamp"
+        ],
+        "caption": "Phoenix Contact PT (push-in), ST (spring) and UT (screw) blocks. Weidmüller covers the same three types with its A-, Z- and W-Series."
+      },
+      {
+        "type": "h2",
+        "text": "Where Phoenix Contact stands out"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "One system across connection types, so much of the accessory range (jumpers, markers, end covers) is shared",
+          "A very wide choice of special-function blocks: fuse, knife-disconnect, sensor and multi-level"
+        ]
+      },
+      {
+        "type": "image",
+        "photos": [
+          "multi-level",
+          "fuse",
+          "disconnect"
+        ],
+        "caption": "Phoenix Contact special-function blocks: double-level, fuse and knife-disconnect."
+      },
+      {
+        "type": "p",
+        "text": "The thing to check is the series. Older panels often use the UK screw series, while new designs use UT. They look similar but their accessories are not always interchangeable, so match the exact series when you extend a strip."
+      },
+      {
+        "type": "h2",
+        "text": "Where Weidmüller stands out"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A long-established screw range (W-Series) alongside push-in and tension-clamp series",
+          "Push-in A-Series designed for fast wiring, with test and marking features built into the blocks"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "As with Phoenix Contact, each Weidmüller series has its own jumpers and end plates. Check the accessory part numbers against the series you are using, and confirm by item number rather than by the block's appearance."
+      },
+      {
+        "type": "callout",
+        "title": "Mixing the two brands",
+        "text": "Both brands clip onto the same standard 35 mm DIN rail, so a strip can contain both. Keep each bridged group of blocks within one series, because jumpers and end plates don't fit across brands."
+      },
+      {
+        "type": "h2",
+        "text": "How to choose"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Extending a panel: use whatever is already on the rail",
+          "New design: choose the connection type first, then compare the functions each range offers",
+          "Check the rated current, conductor range and approvals (UL, CSA, IEC) on each datasheet for the exact block"
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Are Phoenix Contact and Weidmüller terminal blocks interchangeable?",
+        "a": "They fit the same DIN rail and do the same job, but they aren't drop-in identical. Dimensions, accessories and markers differ, so treat a swap as a design change and check the datasheets."
+      },
+      {
+        "q": "Which is better, Phoenix Contact or Weidmüller?",
+        "a": "Neither is better for every job. Both are full-range specialists; the right choice usually depends on what's already in your panels, your plant standards and the specific functions you need."
+      }
+    ],
+    "related": [
+      "push-in",
+      "spring-clamp",
+      "screw-clamp"
+    ]
+  },
+  "factCheck": [
+    "Series names per type for both brands (PT/ST/UT/UK; A-, Z- and W-Series)",
+    "Double-level designations (PTTB, STTB, UTTB; WDK)",
+    "PCB connector brand names (COMBICON, OMNIMATE)",
+    "Accessory compatibility statements between UK and UT series"
+  ],
+  "reviewNote": "Demo article written for the design preview",
+  "history": [
+    {
+      "at": "2026-11-26T15:00:00.000Z",
+      "note": "Demo comparison article added and approved for the local preview"
+    }
+  ]
+}

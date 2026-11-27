@@ -85,6 +85,7 @@ export function EditForm({ v, types }: { v: EditValues; types: { slug: string; n
           <label className="block text-sm">
             <span className="font-medium">Category</span>
             <select name="category" defaultValue={v.category} className={`${field} mt-1.5`}>
+              <option>Comparison</option>
               <option>Selection</option>
               <option>Sizing</option>
               <option>Checklist</option>
@@ -110,7 +111,7 @@ export function EditForm({ v, types }: { v: EditValues; types: { slug: string; n
         <span className="font-medium">Article</span>
         <span className="mt-1 block text-xs text-steel">
           <code>## Heading</code>, <code>### Subheading</code>, <code>- list item</code>, <code>&gt; **Tip title** tip text</code>, tables as{" "}
-          <code>| a | b |</code> rows. Leave a blank line between paragraphs.
+          <code>| a | b |</code> rows, images as <code>![Caption](push-in)</code>. Leave a blank line between paragraphs.
         </span>
         <textarea name="body" defaultValue={v.body} required rows={24} className={`${field} mt-1.5 font-mono text-[13px] leading-relaxed`} />
       </label>

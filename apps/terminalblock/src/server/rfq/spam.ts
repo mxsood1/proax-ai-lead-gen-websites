@@ -1,5 +1,4 @@
 import { createHash } from "node:crypto";
-import type { Submission } from "./schema";
 
 /** One-way, salted hash so raw IP addresses are never stored. */
 export function hashIp(ip: string, salt = process.env.DESK_SECRET ?? "local") {
@@ -10,23 +9,18 @@ const FREE_MAIL = /@(gmail|yahoo|hotmail|outlook|live|icloud|aol|proton(mail)?|g
 export const isFreeEmail = (email: string) => FREE_MAIL.test(email);
 
 /**
- * Returns hard-block reasons (request rejected) and soft signals (lead kept,
- * marked for review). Timing is measured from when the form was opened.
+ * Spam signals in free text (a question, notes). Signals don't reject the
+ * message; they mark it so the desk can ignore it.
  */
-export function checkSpam(s: Submission, now = Date.now()) {
-  const block: string[] = [];
+export function spamSignals(text: string) {
   const signals: string[] = [];
-
-  if (s.website) block.push("honeypot");
-  if (s.startedAt > 0 && now - s.startedAt < 3000) block.push("submitted too fast");
-
-  const allText = [s.details.notes, ...s.lines.map((l) => `${l.part} ${l.notes}`)].join(" ");
-  const urls = allText.match(/https?:\/\//gi)?.length ?? 0;
-  if (urls >= 3) signals.push(`${urls} links in the message`);
-  if (/\b(viagra|casino|crypto|seo services|backlinks|loan offer)\b/i.test(allText)) signals.push("spam keywords");
-  if (s.lines.length === 0 && s.details.notes.length < 10) signals.push("no parts and almost no notes");
-
-  return { block, signals };
+  const urls = text.match(/https?:\/\/|www\./gi)?.length ?? 0;
+  if (urls >= 2) signals.push(`${urls} links in the message`);
+  if (/\b(viagra|casino|crypto|bitcoin|seo services|backlinks|guest post|loan offer|forex|escort)\b/i.test(text)) signals.push("spam keywords");
+  if (/(.)\1{9,}/.test(text)) signals.push("repeated characters");
+  const letters = text.replace(/[^A-Za-z]/g, "");
+  if (letters.length > 40 && /[A-Z]/.test(letters) && letters === letters.toUpperCase()) signals.push("all capitals");
+  return signals;
 }
 
 /** Small in-memory rate limiter (per server instance). */

@@ -2,7 +2,7 @@
  * Real product images used on the site: manufacturer catalog photos of
  * specific parts, cut out onto a transparent background (see
  * public/photos/README.md). Each entry records the exact part shown so the
- * site can caption it and link straight to a quote.
+ * site can caption it with the exact part.
  */
 import data from "./photos.json";
 
@@ -36,6 +36,13 @@ export const photoCredits = data.credits as Record<string, PhotoCredit>;
 
 export function getPhoto(id: string): Photo | null {
   return photos[id] ?? null;
+}
+
+/** Product images that can be placed inside articles (cut-outs, not page-header scenes). */
+export function articleImages() {
+  return Object.entries(photos)
+    .filter(([, p]) => p.cutout)
+    .map(([id, p]) => ({ id, part: p.part ?? "", alt: p.alt }));
 }
 
 /** Every photo with its credit, for the credits page. */

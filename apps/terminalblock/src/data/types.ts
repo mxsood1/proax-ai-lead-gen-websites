@@ -192,7 +192,7 @@ export const productTypes: ProductType[] = [
       { label: "Typical standards", value: "UL 1059" },
     ],
     faqs: [
-      { q: "Can barrier strips go on a DIN rail?", a: "Standard barrier strips are panel-mount, but DIN-rail adapters and DIN-mount barrier styles exist. Tell us your setup and we'll find a match." },
+      { q: "Can barrier strips go on a DIN rail?", a: "Standard barrier strips are panel-mount, but DIN-rail adapters and DIN-mount barrier styles exist. Ask us about your setup if you are not sure which fits." },
     ],
   },
   {

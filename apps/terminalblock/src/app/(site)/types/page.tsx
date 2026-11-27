@@ -3,7 +3,6 @@ import { productTypes } from "@/data/types";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { TypeCard } from "@/components/home/TypesGrid";
 import { Container } from "@/components/ui/Section";
-import { FinalCta } from "@/components/home/FinalCta";
 
 export const metadata: Metadata = {
   title: "Terminal block types",
@@ -17,7 +16,7 @@ export default function TypesPage() {
         code="TY"
         eyebrow="Product types"
         title="Every kind of terminal block, explained in a minute"
-        lede="Pick a type to see what it's for, what to watch out for, and typical specs — then request a quote for exactly what you need."
+        lede="Pick a type to see what it's for, what to watch out for, typical specs, and which product family each brand offers."
         image="header-types"
         imagePosition="center"
       />
@@ -30,7 +29,6 @@ export default function TypesPage() {
           </div>
         </Container>
       </section>
-      <FinalCta />
     </>
   );
 }

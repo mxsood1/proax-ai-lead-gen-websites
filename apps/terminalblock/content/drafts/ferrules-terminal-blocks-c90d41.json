@@ -36,6 +36,15 @@
         ]
       },
       {
+        "type": "image",
+        "photos": [
+          "push-in",
+          "spring-clamp",
+          "screw-clamp"
+        ],
+        "caption": "Ferrules can be used with push-in, spring-clamp and screw-clamp blocks; the datasheet lists the approved sizes."
+      },
+      {
         "type": "h2",
         "text": "When to check the datasheet"
       },
@@ -115,12 +124,19 @@
         "text": "A ferruled stranded wire can be pushed straight into a push-in block, as long as the ferrule is the right size and crimped evenly. A crimp that leaves the ferrule bent or unevenly flattened may not seat fully, so use a crimp profile the block manufacturer accepts, such as a square or trapezoid crimp."
       },
       {
+        "type": "image",
+        "photos": [
+          "push-in"
+        ],
+        "caption": "With a push-in block, a ferruled conductor can usually be inserted without opening the spring."
+      },
+      {
         "type": "h2",
         "text": "Sourcing tip"
       },
       {
         "type": "p",
-        "text": "Ferrules are ordered by cross-section, sleeve length and insulation. When you order terminal blocks for a new panel, add the ferrule sizes to the same RFQ, and the crimp tool if your team needs one."
+        "text": "Ferrules are ordered by cross-section, sleeve length and insulation. When you order terminal blocks for a new panel, add the ferrule sizes to the same order, and the crimp tool if your team needs one."
       }
     ],
     "faqs": [

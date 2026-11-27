@@ -59,6 +59,8 @@ function blockText(b: GuideBlock): string {
       return `${b.title} ${b.text}`;
     case "table":
       return [...b.head, ...b.rows.flat()].join(" ");
+    case "image":
+      return b.caption ?? "";
     default:
       return b.text;
   }
@@ -69,7 +71,13 @@ export function guideText(g: Guide) {
 }
 
 export function wordCount(g: Guide) {
-  return g.body.map(blockText).join(" ").split(/\s+/).filter(Boolean).length;
+  // Article text only: image captions don't count towards length
+  return g.body
+    .filter((b) => b.type !== "image")
+    .map(blockText)
+    .join(" ")
+    .split(/\s+/)
+    .filter(Boolean).length;
 }
 
 /**
@@ -87,6 +95,8 @@ export function qualityIssues(g: Guide): string[] {
   if (g.description.length > 160) issues.push(`Description is ${g.description.length} characters; search results cut it after about 160.`);
   if (g.faqs.length === 0) issues.push("No FAQs. Two or three real buyer questions help readers and search engines.");
   if (g.keyTakeaways.length === 0) issues.push("No key takeaways.");
+  const images = g.body.filter((b) => b.type === "image").length;
+  if (images === 0) issues.push("No images. Add at least one product image so readers can see what's being described.");
   const hype = HYPE.filter((w) => new RegExp(`\\b${w}\\b`, "i").test(all));
   if (hype.length) issues.push(`Marketing words to remove: ${hype.join(", ")}.`);
   if (/!/.test(all)) issues.push("Contains exclamation marks.");

@@ -32,6 +32,14 @@ export const captureSchema = z
 
 export type Capture = z.infer<typeof captureSchema>;
 
+/** "Email me this comparison": company is optional here, and the brand pair is required. */
+export const comparisonSchema = captureSchema.extend({
+  company: text(160).default(""),
+  pair: z.string().trim().max(120).regex(/^[a-z0-9-]+-vs-[a-z0-9-]+$/, "Unknown comparison."),
+});
+
+export type ComparisonCapture = z.infer<typeof comparisonSchema>;
+
 /** Bots: honeypot filled, or the form sent within 2 seconds of opening. */
 export function isBot(c: Capture, now = Date.now()) {
   return Boolean(c.website) || (c.startedAt > 0 && now - c.startedAt < 2000);
@@ -56,6 +64,81 @@ export function scoreCapture(kind: LeadKind, c: Pick<Capture, "email" | "role" |
   }
   score = Math.max(0, Math.min(100, score));
   return { score, tier: score >= 80 ? "hot" : score >= 50 ? "warm" : "cold", reasons };
+}
+
+/* ------------------------------ "Ask us" form ------------------------------ */
+
+export const questionSchema = z
+  .object({
+    question: z.string().trim().min(15, "Please add a little more detail to your question.").max(3000, "Please keep your question under 3,000 characters."),
+    email: z.string().trim().toLowerCase().email("Enter a valid email address.").max(160),
+    name: text(120).default(""),
+    company: text(160).default(""),
+    role: z.enum(ROLES).or(z.literal("")).default(""),
+    /** Page the question was asked from, e.g. "/guides/din-rail-types" */
+    page: text(200).default(""),
+    marketingOptIn: z.boolean().default(false),
+    consent: z.literal(true, { error: "Please agree so we can reply to you." }),
+    website: text(200).default(""), // honeypot
+    startedAt: z.number().int().nonnegative().default(0),
+  })
+  .strict();
+
+export type QuestionInput = z.infer<typeof questionSchema>;
+
+/** Questions: a real question from a company address is a good lead; spam signals mark it as spam (kept, not alerted). */
+export function scoreQuestion(q: Pick<QuestionInput, "email" | "role" | "question">, signals: string[]): LeadScore {
+  if (signals.length) return { score: 0, tier: "spam", reasons: signals.map((s) => `spam: ${s}`) };
+  let score = 30;
+  const reasons: string[] = [];
+  const add = (pts: number, why: string) => {
+    score += pts;
+    reasons.push(`${pts > 0 ? "+" : ""}${pts} ${why}`);
+  };
+  if (isFreeEmail(q.email)) add(-5, "free email address");
+  else add(15, "company email domain");
+  if (q.role === "Buyer / purchasing") add(10, "buyer");
+  else if (q.role === "Engineer / designer" || q.role === "Maintenance / technician") add(5, q.role.split(" /")[0].toLowerCase());
+  if (q.question.length >= 120) add(10, "detailed question");
+  if (/\b\d{5,}\b|\b[A-Z]{1,5}[ -]?\d+(,\d+)?\b/.test(q.question)) add(10, "mentions a part number");
+  score = Math.max(0, Math.min(100, score));
+  return { score, tier: score >= 80 ? "hot" : score >= 50 ? "warm" : "cold", reasons };
+}
+
+export function buildQuestionLead(req: NextRequest, q: QuestionInput, signals: string[]): Lead {
+  const now = new Date().toISOString();
+  const score = scoreQuestion(q, signals);
+  return {
+    id: newId(),
+    kind: "question",
+    ref: makeRef(site.rfqPrefix),
+    site: config.siteId,
+    createdAt: now,
+    status: signals.length ? "spam" : "new",
+    lines: [],
+    files: [],
+    details: { urgency: "", equivalents: "", province: "", notes: q.question },
+    contact: { name: q.name, company: q.company, email: q.email, phone: "", role: q.role || undefined, marketingOptIn: q.marketingOptIn, consentAt: now },
+    meta: {
+      ipHash: hashIp(clientIp(req)),
+      userAgent: (req.headers.get("user-agent") ?? "").slice(0, 200),
+      referer: (q.page || req.headers.get("referer") || "").slice(0, 300),
+      spamSignals: signals,
+    },
+    analysis: {
+      analyzedAt: now,
+      by: "rules",
+      score,
+      matches: [],
+      summary: q.question.slice(0, 280),
+      buyerType: q.role || "unknown",
+      intent: q.page ? `asked from ${q.page}` : "asked a question",
+      flags: signals,
+      questions: [],
+      supplierInquiry: "",
+    },
+    events: [{ at: now, type: "received", note: q.page ? `Question from ${q.page}` : "Question" }],
+  };
 }
 
 export function buildCaptureLead(req: NextRequest, kind: Exclude<LeadKind, "rfq">, c: Capture, lines: LeadLine[], note: string): Lead {
@@ -85,7 +168,7 @@ export function buildCaptureLead(req: NextRequest, kind: Exclude<LeadKind, "rfq"
       matches: [],
       summary: note,
       buyerType: c.role || "unknown",
-      intent: kind === "list" ? "researching parts, list saved" : "researching, downloaded the guide",
+      intent: kind === "list" ? "researching parts, list saved" : kind === "comparison" ? `comparing brands: ${note}` : "researching, downloaded the guide",
       flags: [],
       questions: [],
       supplierInquiry: "",

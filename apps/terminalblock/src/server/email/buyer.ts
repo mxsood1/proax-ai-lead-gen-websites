@@ -6,13 +6,13 @@ import { config } from "@/server/config";
 import type { Lead } from "@/server/leads/types";
 
 /**
- * Emails sent TO the visitor (the guide link, or their saved parts list).
+ * Emails sent TO the visitor (the guide download link).
  * Default: written to .data/outbox/ (nobody is emailed). Real delivery only when EMAIL_DELIVERY=on
  * and Resend is configured. Only ever sent to the address the visitor typed into the form.
  */
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 const base = () => (process.env.SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
-const footer = `${site.name} · Quotes are prepared by our featured supplier, ${site.featuredSupplier.legalName.replace(/\.$/, "")}. You're receiving this because you asked for it on ${site.domain}.`;
+const footer = `${site.name} · Terminal block brands compared side by side. You're receiving this because you asked for it on ${site.domain}.`;
 
 function layout(title: string, bodyHtml: string) {
   return `<!doctype html><html><body style="margin:0;background:#f6f3ec;font-family:Arial,sans-serif;color:#1b1915;font-size:15px;line-height:1.55">
@@ -29,26 +29,32 @@ const button = (href: string, label: string) =>
 
 export function renderGuideEmail(lead: Lead, guideTitle: string, link: string) {
   const subject = `Your ${guideTitle}`;
-  const text = [`Hi${lead.contact.name ? ` ${lead.contact.name}` : ""},`, "", `Here is your copy of the ${guideTitle}:`, link, "", "The link works for 7 days.", "", `When your list is ready, send it for one quote: ${base()}/rfq`, "", footer].join("\n");
+  const text = [`Hi${lead.contact.name ? ` ${lead.contact.name}` : ""},`, "", `Here is your copy of the ${guideTitle}:`, link, "", "The link works for 7 days.", "", `Comparing brands? See them side by side: ${base()}/compare`, "", footer].join("\n");
   const html = layout(
     `Your ${guideTitle}`,
-    `<p>Hi${lead.contact.name ? ` ${esc(lead.contact.name)}` : ""},</p><p>Here is your copy. The link works for 7 days.</p>${button(link, "Download the guide (PDF)")}<p>When your list is ready, <a href="${esc(base())}/rfq" style="color:#c2410c">send it for one quote</a>: blocks, jumpers, end plates, markers and rail in one request.</p>`,
+    `<p>Hi${lead.contact.name ? ` ${esc(lead.contact.name)}` : ""},</p><p>Here is your copy. The link works for 7 days.</p>${button(link, "Download the guide (PDF)")}<p>Comparing brands? <a href="${esc(base())}/compare" style="color:#c2410c">See them side by side</a>, or reply to this email with your question.</p>`,
   );
   return { subject, text, html };
 }
 
-export function renderListEmail(lead: Lead, rfqLink: string) {
-  const n = lead.lines.length;
-  const subject = `Your terminal block list (${n} part${n === 1 ? "" : "s"}) · ${lead.ref}`;
-  const rows = lead.lines.map((l) => `- ${l.manufacturer} ${l.part}${l.notes ? ` · ${l.notes}` : ""}`).join("\n");
-  const text = [`Here is the list you saved on ${site.name}:`, "", rows, "", `Get a quote for this list: ${rfqLink}`, "", footer].join("\n");
+export function renderComparisonEmail(lead: Lead, title: string, link: string, pageUrl: string) {
+  const subject = `Your comparison: ${title}`;
+  const text = [
+    `Hi${lead.contact.name ? ` ${lead.contact.name}` : ""},`,
+    "",
+    `Here is your PDF of ${title}:`,
+    link,
+    "",
+    "The link works for 7 days. The latest version is always on the site:",
+    pageUrl,
+    "",
+    "Have a question about a specific part? Reply to this email.",
+    "",
+    footer,
+  ].join("\n");
   const html = layout(
-    "Your terminal block list",
-    `<p>Here is the list you saved. Reference ${esc(lead.ref)}.</p>
-<table cellpadding="8" style="border-collapse:collapse;width:100%;font-size:14px;border:1px solid #e0d9cc">
-<tr style="background:#eee9df;text-align:left"><th>Part</th><th>Manufacturer</th><th>Description</th></tr>
-${lead.lines.map((l) => `<tr style="border-top:1px solid #e0d9cc"><td style="font-family:monospace">${esc(l.part)}</td><td>${esc(l.manufacturer)}</td><td style="color:#5e554a">${esc(l.notes)}</td></tr>`).join("")}
-</table>${button(rfqLink, "Get a quote for this list")}<p style="color:#5e554a">Add quantities on the quote form and we'll come back with pricing and availability.</p>`,
+    `Your comparison: ${title}`,
+    `<p>Hi${lead.contact.name ? ` ${esc(lead.contact.name)}` : ""},</p><p>Here is your PDF. The link works for 7 days.</p>${button(link, "Download the comparison (PDF)")}<p>The latest version is always on the site: <a href="${esc(pageUrl)}" style="color:#c2410c">${esc(title)}</a>. Have a question about a specific part? Just reply to this email.</p>`,
   );
   return { subject, text, html };
 }

@@ -10,13 +10,10 @@ export function Marker({ children, className }: { children: ReactNode; className
   return <span className={cn("marker", className)}>{children}</span>;
 }
 
+/** Small label above a heading. `code` is ignored: code badges like "TB-01" were removed as decoration. */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- code kept so existing callers compile
 export function Eyebrow({ code, children, tone = "dark" }: { code?: string; children: ReactNode; tone?: "dark" | "light" }) {
-  return (
-    <div className={cn("inline-flex items-center gap-2 text-sm", tone === "dark" ? "text-ink-4" : "text-white/60")}>
-      {code && <Marker>{code}</Marker>}
-      <span>{children}</span>
-    </div>
-  );
+  return <div className={cn("inline-flex items-center gap-2 text-sm", tone === "dark" ? "text-ink-4" : "text-white/60")}>{children}</div>;
 }
 
 export function SectionHeading({

@@ -53,6 +53,15 @@
         ]
       },
       {
+        "type": "image",
+        "photos": [
+          "hero-grey",
+          "hero-blue",
+          "hero-pe"
+        ],
+        "caption": "Feed-through, neutral (blue) and ground (green-yellow) blocks of one series all clip onto the same rail profile."
+      },
+      {
         "type": "h2",
         "text": "Material and finish"
       },
@@ -91,6 +100,13 @@
         ]
       },
       {
+        "type": "image",
+        "photos": [
+          "ground"
+        ],
+        "caption": "Ground blocks bond to the rail through their metal foot, so check the rail they are approved for."
+      },
+      {
         "type": "h2",
         "text": "Fixing and cutting rail"
       },
@@ -99,12 +115,19 @@
         "text": "Fix the rail to the back plate at regular intervals so it doesn't flex while blocks are wired. Long strips of heavy blocks need fixing points closer together. Cut rail with a rail cutter or a fine saw, deburr the ends, and fit an end stop at both ends of every strip so blocks can't slide along the rail."
       },
       {
+        "type": "image",
+        "photos": [
+          "accessories"
+        ],
+        "caption": "An end cover and a plug-in jumper: plan these along with the rail length."
+      },
+      {
         "type": "h2",
         "text": "Sourcing tip"
       },
       {
         "type": "p",
-        "text": "Rail is usually sold in 1 m or 2 m lengths. Include the profile, material, slotted or solid, and length in your RFQ, along with end stops for each strip."
+        "text": "Rail is usually sold in 1 m or 2 m lengths. Include the profile, material, slotted or solid, and length on your order, along with end stops for each strip."
       }
     ],
     "faqs": [

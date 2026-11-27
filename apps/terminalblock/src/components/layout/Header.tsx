@@ -39,8 +39,8 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <div className="hidden sm:block">
-            <ButtonLink href="/rfq" size="sm" variant="ink">
-              Request a quote <ArrowRight className="h-4 w-4" />
+            <ButtonLink href="#ask" size="sm" variant="ink">
+              Ask a question <ArrowRight className="h-4 w-4" />
             </ButtonLink>
           </div>
           <button
@@ -69,8 +69,8 @@ export function Header() {
                 <ArrowRight className="h-4 w-4 text-steel" />
               </Link>
             ))}
-            <ButtonLink href="/rfq" className="mt-3 w-full">
-              Request a quote
+            <ButtonLink href="#ask" className="mt-3 w-full" onClick={() => setOpen(false)}>
+              Ask a question
             </ButtonLink>
           </nav>
         </div>

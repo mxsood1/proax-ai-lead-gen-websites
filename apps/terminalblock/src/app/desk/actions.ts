@@ -10,7 +10,6 @@ import { requireDesk } from "@/server/auth/session";
 import { DESK_COOKIE, SESSION_MS, passwordMatches, signSession } from "@/server/auth/token";
 import { LEAD_STATUSES, type LeadStatus } from "@/server/leads/types";
 import { hashIp, rateLimited } from "@/server/rfq/spam";
-import { analyzeLead } from "@/server/sourcing/pipeline";
 import { leadStore } from "@/server/storage";
 import { createDraft, DuplicateTopicError, reviseDraft } from "@/server/content/generate";
 import { getDraft, hasPlaceholders, saveDraft, withHistory, type DraftStatus } from "@/server/content/store";
@@ -21,7 +20,7 @@ import { linesToList, textToBlocks, textToFaqs } from "@/server/content/markdown
 /* -------------------------------- auth -------------------------------- */
 
 export async function loginAction(_prev: { error: string } | null, form: FormData) {
-  if (!config.desk.enabled) return { error: "The sourcing desk isn't configured on this server." };
+  if (!config.desk.enabled) return { error: "The desk isn't configured on this server." };
   const h = await headers();
   const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
   if (rateLimited(`login:${hashIp(ip)}`, 8, 15 * 60 * 1000)) return { error: "Too many attempts. Wait 15 minutes and try again." };
@@ -63,17 +62,6 @@ export async function addLeadNote(form: FormData) {
   const note = str(form, "note", 2000);
   if (!note) return;
   await leadStore().update(id, (l) => ({ ...l, events: [...l.events, { at: now(), type: "note", note }] }));
-  revalidatePath(`/desk/leads/${id}`);
-}
-
-export async function reanalyzeLead(form: FormData) {
-  await requireDesk();
-  const id = str(form, "id", 64);
-  const store = leadStore();
-  const lead = await store.get(id);
-  if (!lead) return;
-  const analysis = await analyzeLead(lead);
-  await store.update(id, (l) => ({ ...l, analysis, events: [...l.events, { at: now(), type: "analyzed", note: `${analysis.by} · score ${analysis.score.score}` }] }));
   revalidatePath(`/desk/leads/${id}`);
 }
 
@@ -160,7 +148,7 @@ const EditSchema = z.object({
   title: z.string().trim().min(5).max(120),
   shortTitle: z.string().trim().min(2).max(60),
   description: z.string().trim().min(10).max(300),
-  category: z.enum(["Selection", "Sizing", "Checklist"]),
+  category: z.enum(["Comparison", "Selection", "Sizing", "Checklist"]),
   readMinutes: z.coerce.number().int().min(1).max(20),
   takeaways: z.string().max(2000),
   body: z.string().min(20).max(40000),

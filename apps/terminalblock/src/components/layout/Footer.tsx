@@ -2,18 +2,17 @@ import Link from "next/link";
 import { site } from "@/config/site";
 import { productTypes } from "@/data/types";
 import { guides } from "@/data/guides";
+import { getBrand, pairSlug, popularPairs } from "@/data/brands";
 import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/ui/Section";
 
 export function Footer() {
   const cols = [
     {
-      title: "Tools",
+      title: "Compare",
       links: [
-        { href: "/finder", label: "Terminal block finder" },
-        { href: "/identify", label: "Identify a part (photo)" },
-        { href: "/rfq", label: "Submit an RFQ" },
-        { href: "/rfq#bom", label: "Upload a BOM" },
+        { href: "/compare", label: "All brands side by side" },
+        ...popularPairs.slice(0, 3).map(([a, b]) => ({ href: `/compare/${pairSlug(a, b)}`, label: `${getBrand(a)!.name} vs ${getBrand(b)!.name}` })),
       ],
     },
     {
@@ -25,9 +24,10 @@ export function Footer() {
       links: guides.map((g) => ({ href: `/guides/${g.slug}`, label: g.shortTitle })),
     },
     {
-      title: "Company",
+      title: "About",
       links: [
-        { href: "/about", label: "How it works" },
+        { href: "/about", label: "How we compare" },
+        { href: "#ask", label: "Ask a question" },
         { href: "/privacy", label: "Privacy" },
         { href: "/terms", label: "Terms" },
       ],
@@ -41,7 +41,7 @@ export function Footer() {
           <div>
             <Logo tone="light" />
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-[#aaa398]">
-              One request, many suppliers. Tell us the terminal blocks you need and our sourcing desk does the legwork.
+              Terminal block brands compared side by side, with plain guides to help you choose the right block.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
@@ -64,8 +64,8 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs leading-relaxed text-white/45 md:flex-row md:items-start md:justify-between">
           <p className="max-w-3xl">
-            © {site.year} {site.name}. Quotes are prepared and fulfilled by our featured supplier, {site.featuredSupplier.legalName}.
-            Requests you submit are handled under our{" "}
+            © {site.year} {site.name}. Comparisons are based on published manufacturer information; always confirm specifications on the datasheet.
+            Questions you send are handled under our{" "}
             <Link href="/privacy" className="underline hover:text-white">
               privacy policy
             </Link>

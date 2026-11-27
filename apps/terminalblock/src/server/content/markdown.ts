@@ -7,6 +7,7 @@
  *   - item                → bullet list (consecutive lines)
  *   > **Title** text      → callout box
  *   | a | b |             → table (first row is the header; a |---| row is optional)
+ *   ![Caption](push-in, ground) → one to three product images in a row (ids from src/data/photos.json)
  *   anything else         → paragraph (blank line between paragraphs)
  */
 import type { GuideBlock } from "@/data/guides";
@@ -37,6 +38,8 @@ export function blocksToText(blocks: GuideBlock[]): string {
           return `> **${b.title}** ${b.text}`;
         case "table":
           return [`| ${b.head.map(cell).join(" | ")} |`, `|${b.head.map(() => "---").join("|")}|`, ...b.rows.map((r) => `| ${r.map(cell).join(" | ")} |`)].join("\n");
+        case "image":
+          return `![${(b.caption ?? "").replace(/[[\]]/g, "")}](${b.photos.join(", ")})`;
       }
     })
     .join("\n\n");
@@ -52,7 +55,16 @@ export function textToBlocks(text: string): GuideBlock[] {
       i++;
       continue;
     }
-    if (line.startsWith("### ")) {
+    const img = line.match(/^!\[([^\]]*)\]\(([^)]*)\)$/);
+    if (img) {
+      const photos = img[2]
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => /^[a-z0-9-]{1,60}$/.test(s))
+        .slice(0, 3);
+      if (photos.length) blocks.push(img[1].trim() ? { type: "image", photos, caption: img[1].trim() } : { type: "image", photos });
+      i++;
+    } else if (line.startsWith("### ")) {
       blocks.push({ type: "h3", text: line.slice(4).trim() });
       i++;
     } else if (line.startsWith("## ")) {
@@ -78,7 +90,7 @@ export function textToBlocks(text: string): GuideBlock[] {
       blocks.push({ type: "table", head, rows: body });
     } else {
       const parts: string[] = [];
-      while (i < lines.length && lines[i].trim() && !/^(#{2,3} |[-*] |>|\|)/.test(lines[i].trim())) parts.push(lines[i++].trim());
+      while (i < lines.length && lines[i].trim() && !/^(#{2,3} |[-*] |>|\||!\[)/.test(lines[i].trim())) parts.push(lines[i++].trim());
       blocks.push({ type: "p", text: parts.join(" ") });
     }
   }

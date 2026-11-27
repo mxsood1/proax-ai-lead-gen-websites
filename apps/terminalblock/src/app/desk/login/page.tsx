@@ -3,7 +3,7 @@ import { LogoMark } from "@/components/brand/Logo";
 import { LoginForm } from "@/components/desk/LoginForm";
 import { config } from "@/server/config";
 
-export const metadata: Metadata = { title: "Sourcing desk sign in", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Desk sign in", robots: { index: false, follow: false } };
 
 export default function DeskLogin() {
   return (
@@ -11,7 +11,7 @@ export default function DeskLogin() {
       <div className="w-full max-w-sm rounded-2xl bg-paper p-8 shadow-[inset_0_0_0_1px_var(--color-line)]">
         <div className="flex items-center gap-2.5">
           <LogoMark />
-          <span className="font-medium">Sourcing desk</span>
+          <span className="font-medium">Desk</span>
         </div>
         <p className="mt-2 text-sm text-ink-4">Internal tool. Authorized staff only.</p>
         <div className="mt-8">

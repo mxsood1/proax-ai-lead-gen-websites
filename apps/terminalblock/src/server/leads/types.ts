@@ -1,4 +1,4 @@
-export const LEAD_STATUSES = ["new", "reviewing", "sourcing", "quoted", "won", "lost", "spam"] as const;
+export const LEAD_STATUSES = ["new", "reviewing", "answered", "sourcing", "quoted", "won", "lost", "spam"] as const;
 export type LeadStatus = (typeof LEAD_STATUSES)[number];
 
 export type LeadLine = {
@@ -47,10 +47,19 @@ export type LeadAnalysis = {
 
 export type LeadEvent = { at: string; type: string; note?: string };
 
-/** How the lead came in: a full quote request, a guide download, or a parts list emailed from the Finder */
-export const LEAD_KINDS = ["rfq", "guide", "list"] as const;
+/**
+ * How the lead came in: a question from the "Ask us" form, or a guide download.
+ * "rfq" and "list" are kept only so older leads still display.
+ */
+export const LEAD_KINDS = ["question", "comparison", "guide", "rfq", "list"] as const;
 export type LeadKind = (typeof LEAD_KINDS)[number];
-export const LEAD_KIND_LABEL: Record<LeadKind, string> = { rfq: "Quote request", guide: "Guide download", list: "Emailed parts list" };
+export const LEAD_KIND_LABEL: Record<LeadKind, string> = {
+  question: "Question",
+  comparison: "Comparison PDF",
+  guide: "Guide download (old)",
+  rfq: "Quote request (old form)",
+  list: "Emailed parts list (old)",
+};
 
 export type Lead = {
   id: string;
@@ -96,6 +105,9 @@ export type LeadSummary = Pick<Lead, "id" | "ref" | "createdAt" | "status" | "si
   urgency: string;
   tier: LeadScore["tier"] | null;
   score: number | null;
+  /** Start of the question (questions only) */
+  excerpt: string;
+  email: string;
 };
 
 export function summarize(lead: Lead): LeadSummary {
@@ -112,5 +124,7 @@ export function summarize(lead: Lead): LeadSummary {
     urgency: lead.details.urgency,
     tier: lead.analysis?.score.tier ?? null,
     score: lead.analysis?.score.score ?? null,
+    excerpt: lead.kind === "question" ? lead.details.notes.slice(0, 140) : "",
+    email: lead.contact.email,
   };
 }

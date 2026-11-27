@@ -6,7 +6,7 @@ import { LogoMark } from "@/components/brand/Logo";
 import { integrationStatus } from "@/server/config";
 import { logoutAction } from "../actions";
 
-export const metadata: Metadata = { title: "Sourcing desk", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Desk", robots: { index: false, follow: false } };
 
 export default function DeskLayout({ children }: { children: ReactNode }) {
   const status = integrationStatus();
@@ -17,7 +17,7 @@ export default function DeskLayout({ children }: { children: ReactNode }) {
           <div className="flex items-center gap-6">
             <Link href="/desk" className="flex items-center gap-2.5">
               <LogoMark className="h-6" />
-              <span className="font-medium">Sourcing desk</span>
+              <span className="font-medium">Desk</span>
             </Link>
             <nav className="flex gap-1 text-sm">
               <Link href="/desk" className="rounded-lg px-3 py-1.5 text-[#aaa398] transition-colors hover:bg-ink-3 hover:text-[#efe9de]">

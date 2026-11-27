@@ -13,9 +13,12 @@ function deskUrl(lead: Lead) {
 }
 
 export function renderLeadAlert(lead: Lead) {
+  if (lead.kind === "question") return renderQuestionAlert(lead);
+  if (lead.kind === "comparison" || lead.kind === "guide") return renderDownloadAlert(lead);
   const tier = lead.analysis?.score.tier;
-  const what = lead.kind === "guide" ? "Guide download" : lead.kind === "list" ? "Parts list emailed" : "New RFQ";
-  const subject = `${tier === "hot" ? "[Hot] " : ""}${what} ${lead.ref} · ${lead.contact.company}${lead.kind === "guide" ? "" : ` · ${lead.lines.length} line${lead.lines.length === 1 ? "" : "s"}`}`;
+  // Older lead types (quote requests and emailed parts lists from the previous version of the site)
+  const what = lead.kind === "list" ? "Parts list emailed" : "New RFQ";
+  const subject = `${tier === "hot" ? "[Hot] " : ""}${what} ${lead.ref} · ${lead.contact.company} · ${lead.lines.length} line${lead.lines.length === 1 ? "" : "s"}`;
 
   const lines = lead.lines
     .map((l, i) => `${i + 1}. ${l.part}${l.manufacturer ? ` (${l.manufacturer})` : ""}${l.qty ? ` × ${l.qty}` : ""}`)
@@ -33,7 +36,7 @@ export function renderLeadAlert(lead: Lead) {
     lead.files.length ? `\nFiles: ${lead.files.map((f) => f.name).join(", ")}` : "",
     lead.details.notes ? `\nNotes:\n${lead.details.notes}` : "",
     lead.analysis ? `\nScore: ${lead.analysis.score.score}/100 (${lead.analysis.score.tier}). ${lead.analysis.summary}` : "",
-    `\nOpen in the sourcing desk: ${deskUrl(lead)}`,
+    `\nOpen in the desk: ${deskUrl(lead)}`,
   ]
     .filter((s) => s !== "")
     .join("\n");
@@ -50,9 +53,55 @@ ${lead.lines.map((l) => `<tr><td style="font-family:monospace">${esc(l.part)}</t
 ${lead.details.notes ? `<p style="white-space:pre-wrap;background:#f6f3ec;padding:8px">${esc(lead.details.notes)}</p>` : ""}
 ${lead.files.length ? `<p>Files: ${lead.files.map((f) => esc(f.name)).join(", ")}</p>` : ""}
 ${lead.analysis ? `<p><b>Score ${lead.analysis.score.score}/100 (${esc(lead.analysis.score.tier)})</b><br>${esc(lead.analysis.summary)}</p>` : ""}
-<p><a href="${esc(deskUrl(lead))}">Open in the sourcing desk</a></p>
+<p><a href="${esc(deskUrl(lead))}">Open in the desk</a></p>
 </body></html>`;
 
+  return { subject, text, html };
+}
+
+/** Someone downloaded a comparison PDF (or the old guide): who, and what they were comparing. */
+function renderDownloadAlert(lead: Lead) {
+  const who = lead.contact.company || lead.contact.name || lead.contact.email;
+  const what = lead.kind === "comparison" ? `${lead.details.notes} comparison PDF` : "the guide PDF";
+  const subject = `${lead.kind === "comparison" ? "Comparison PDF" : "Guide PDF"} ${lead.ref} · ${who} · ${lead.details.notes}`;
+  const from = `${lead.contact.name || "(no name)"} <${lead.contact.email}>${lead.contact.company ? `, ${lead.contact.company}` : ""}${lead.contact.role ? ` · ${lead.contact.role}` : ""}`;
+  const text = [
+    `${who} downloaded ${what} on ${lead.site}.`,
+    "",
+    `From: ${from}`,
+    `Product updates: ${lead.contact.marketingOptIn ? "opted in" : "not opted in"}`,
+    "",
+    `Open in the desk: ${deskUrl(lead)}`,
+  ].join("\n");
+  const html = `<!doctype html><html><body style="font-family:Arial,sans-serif;color:#1b1915;font-size:14px;line-height:1.5">
+<p style="font-family:monospace;color:#5e554a">${esc(lead.ref)} · ${esc(lead.site)}</p>
+<h2 style="font-weight:500;margin:0 0 12px">${esc(who)} downloaded ${esc(what)}</h2>
+<p>${esc(from)}<br>Product updates: ${lead.contact.marketingOptIn ? "opted in" : "not opted in"}</p>
+<p><a href="${esc(deskUrl(lead))}">Open in the desk</a></p>
+</body></html>`;
+  return { subject, text, html };
+}
+
+function renderQuestionAlert(lead: Lead) {
+  const who = lead.contact.company || lead.contact.name || lead.contact.email;
+  const subject = `New question ${lead.ref} · ${who}`;
+  const from = `${lead.contact.name || "(no name)"} <${lead.contact.email}>${lead.contact.company ? `, ${lead.contact.company}` : ""}${lead.contact.role ? ` · ${lead.contact.role}` : ""}`;
+  const text = [
+    `New question ${lead.ref} from ${lead.site}${lead.meta.referer ? ` (asked on ${lead.meta.referer})` : ""}`,
+    "",
+    `From: ${from}`,
+    "",
+    lead.details.notes,
+    "",
+    `Reply to them directly, then mark it in the desk: ${deskUrl(lead)}`,
+  ].join("\n");
+  const html = `<!doctype html><html><body style="font-family:Arial,sans-serif;color:#1b1915;font-size:14px;line-height:1.5">
+<p style="font-family:monospace;color:#5e554a">${esc(lead.ref)} · ${esc(lead.site)}${lead.meta.referer ? ` · ${esc(lead.meta.referer)}` : ""}</p>
+<h2 style="font-weight:500;margin:0 0 12px">New question from ${esc(who)}</h2>
+<p>${esc(from)}</p>
+<p style="white-space:pre-wrap;background:#f6f3ec;padding:12px">${esc(lead.details.notes)}</p>
+<p><a href="${esc(deskUrl(lead))}">Open in the desk</a></p>
+</body></html>`;
   return { subject, text, html };
 }
 

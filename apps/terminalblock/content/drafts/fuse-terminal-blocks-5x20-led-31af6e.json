@@ -16,31 +16,93 @@
     "readMinutes": 4,
     "updated": "2026-11-10",
     "published": "2026-11-10",
-    "related": ["fuse", "screw-clamp", "push-in"],
+    "related": [
+      "fuse",
+      "screw-clamp",
+      "push-in"
+    ],
     "keyTakeaways": [
       "Match the fuse holder to the fuse format: 5 × 20 mm and 1/4 × 1-1/4 in are not interchangeable",
       "Pick the LED indicator variant for your circuit voltage",
       "Fuses produce heat, so check the power dissipation limit when blocks sit side by side"
     ],
     "body": [
-      { "type": "p", "text": "A fuse terminal block combines a terminal and a fuse holder on the DIN rail, so each sensor, actuator or control circuit gets its own protection. Choosing one comes down to three things: the fuse format, whether you want a blown-fuse indicator, and how many blocks will sit side by side." },
-      { "type": "h2", "text": "Fuse formats" },
+      {
+        "type": "p",
+        "text": "A fuse terminal block combines a terminal and a fuse holder on the DIN rail, so each sensor, actuator or control circuit gets its own protection. Choosing one comes down to three things: the fuse format, whether you want a blown-fuse indicator, and how many blocks will sit side by side."
+      },
+      {
+        "type": "h2",
+        "text": "Fuse formats"
+      },
       {
         "type": "table",
-        "head": ["Fuse format", "Where it's common", "Notes"],
+        "head": [
+          "Fuse format",
+          "Where it's common",
+          "Notes"
+        ],
         "rows": [
-          ["5 × 20 mm", "IEC equipment and machinery", "The most common format in DIN-rail fuse blocks"],
-          ["1/4 × 1-1/4 in (6.3 × 32 mm)", "North American equipment", "Larger body; needs a holder made for it"],
-          ["10 × 38 mm", "Higher-current circuits", "Usually in larger fuse blocks or fuse holders"]
+          [
+            "5 × 20 mm",
+            "IEC equipment and machinery",
+            "The most common format in DIN-rail fuse blocks"
+          ],
+          [
+            "1/4 × 1-1/4 in (6.3 × 32 mm)",
+            "North American equipment",
+            "Larger body; needs a holder made for it"
+          ],
+          [
+            "10 × 38 mm",
+            "Higher-current circuits",
+            "Usually in larger fuse blocks or fuse holders"
+          ]
         ]
       },
-      { "type": "p", "text": "Fuse holders are made for one format. Check which fuse your drawings call for before choosing the block, and stock the matching fuses with the right rating and breaking capacity." },
-      { "type": "h2", "text": "How the LED indicator works" },
-      { "type": "p", "text": "Fuse blocks with a blown-fuse indicator have a small LED circuit wired across the fuse. While the fuse is intact, it bypasses the LED. When the fuse opens, current flows through the LED circuit and the load, and the LED lights to show which circuit has failed. That makes fault finding much faster in a long strip." },
-      { "type": "p", "text": "Because the indicator only works within a voltage range, these blocks come in several variants, such as low-voltage DC and higher AC/DC versions. Pick the variant that matches your circuit voltage. A small current flows through the load while the indicator is lit, which is normally harmless but worth knowing for sensitive inputs." },
-      { "type": "h2", "text": "Heat and spacing" },
-      { "type": "p", "text": "Fuses dissipate power, and fuse blocks have a maximum power dissipation per block. When many fuse blocks are mounted side by side, heat builds up, and the datasheet may require derating or spacing. Check the limit for your fuse and current, and consider leaving a gap or a partition plate in long rows of fuse blocks." },
-      { "type": "h2", "text": "Other details to check" },
+      {
+        "type": "image",
+        "photos": [
+          "fuse"
+        ],
+        "caption": "A fuse terminal block for 5 × 20 mm fuses, with a blown-fuse LED indicator."
+      },
+      {
+        "type": "p",
+        "text": "Fuse holders are made for one format. Check which fuse your drawings call for before choosing the block, and stock the matching fuses with the right rating and breaking capacity."
+      },
+      {
+        "type": "h2",
+        "text": "How the LED indicator works"
+      },
+      {
+        "type": "p",
+        "text": "Fuse blocks with a blown-fuse indicator have a small LED circuit wired across the fuse. While the fuse is intact, it bypasses the LED. When the fuse opens, current flows through the LED circuit and the load, and the LED lights to show which circuit has failed. That makes fault finding much faster in a long strip."
+      },
+      {
+        "type": "p",
+        "text": "Because the indicator only works within a voltage range, these blocks come in several variants, such as low-voltage DC and higher AC/DC versions. Pick the variant that matches your circuit voltage. A small current flows through the load while the indicator is lit, which is normally harmless but worth knowing for sensitive inputs."
+      },
+      {
+        "type": "h2",
+        "text": "Heat and spacing"
+      },
+      {
+        "type": "p",
+        "text": "Fuses dissipate power, and fuse blocks have a maximum power dissipation per block. When many fuse blocks are mounted side by side, heat builds up, and the datasheet may require derating or spacing. Check the limit for your fuse and current, and consider leaving a gap or a partition plate in long rows of fuse blocks."
+      },
+      {
+        "type": "image",
+        "photos": [
+          "fuse",
+          "hero-grey"
+        ],
+        "caption": "A fuse block beside a feed-through block: fuse blocks are wider and give off more heat."
+      },
+      {
+        "type": "h2",
+        "text": "Other details to check"
+      },
       {
         "type": "ul",
         "items": [
@@ -50,12 +112,25 @@
           "Approvals required for the panel, such as UL or CSA"
         ]
       },
-      { "type": "callout", "title": "Not a switch", "text": "Opening a fuse carrier isolates the circuit, but most fuse blocks are not designed to switch load current. Switch the load off first unless the datasheet says the carrier can be operated under load." }
+      {
+        "type": "callout",
+        "title": "Not a switch",
+        "text": "Opening a fuse carrier isolates the circuit, but most fuse blocks are not designed to switch load current. Switch the load off first unless the datasheet says the carrier can be operated under load."
+      }
     ],
     "faqs": [
-      { "q": "Can I use a 1/4 × 1-1/4 in fuse in a 5 × 20 mm fuse block?", "a": "No. The two formats have different lengths and diameters. Use a block designed for the fuse your circuit specifies." },
-      { "q": "Why doesn't my blown-fuse LED light up?", "a": "The indicator needs current to flow through the load, and it only works within its voltage range. Check the LED variant matches the circuit voltage and that the load is connected." },
-      { "q": "How many fuse blocks can I mount side by side?", "a": "It depends on the fuse's power dissipation and the block's limit. The datasheet gives the maximum per block and any spacing or derating needed in a row." }
+      {
+        "q": "Can I use a 1/4 × 1-1/4 in fuse in a 5 × 20 mm fuse block?",
+        "a": "No. The two formats have different lengths and diameters. Use a block designed for the fuse your circuit specifies."
+      },
+      {
+        "q": "Why doesn't my blown-fuse LED light up?",
+        "a": "The indicator needs current to flow through the load, and it only works within its voltage range. Check the LED variant matches the circuit voltage and that the load is connected."
+      },
+      {
+        "q": "How many fuse blocks can I mount side by side?",
+        "a": "It depends on the fuse's power dissipation and the block's limit. The datasheet gives the maximum per block and any spacing or derating needed in a row."
+      }
     ]
   },
   "factCheck": [
@@ -65,5 +140,10 @@
     "Power dissipation limits and spacing/derating for rows of fuse blocks: wording general, confirm"
   ],
   "reviewNote": "Demo article written for the design preview",
-  "history": [{ "at": "2026-11-10T15:00:00.000Z", "note": "Demo article added and approved for the local preview" }]
+  "history": [
+    {
+      "at": "2026-11-10T15:00:00.000Z",
+      "note": "Demo article added and approved for the local preview"
+    }
+  ]
 }

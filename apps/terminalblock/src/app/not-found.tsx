@@ -15,8 +15,8 @@ export default function NotFound() {
         <p className="mt-3 max-w-md text-white/65">This page isn&apos;t wired to anything. Let&apos;s get you back to a live terminal.</p>
         <div className="mt-8 flex gap-3">
           <ButtonLink href="/">Home</ButtonLink>
-          <ButtonLink href="/rfq" variant="outline-light">
-            Start an RFQ
+          <ButtonLink href="/compare" variant="outline-light">
+            Compare brands
           </ButtonLink>
         </div>
       </Container>

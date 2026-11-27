@@ -4,14 +4,16 @@ export type GuideBlock =
   | { type: "p"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "callout"; title: string; text: string }
-  | { type: "table"; head: string[]; rows: string[][] };
+  | { type: "table"; head: string[]; rows: string[][] }
+  /** One to three product images in a row (ids from src/data/photos.json), with an optional caption */
+  | { type: "image"; photos: string[]; caption?: string };
 
 export type Guide = {
   slug: string;
   title: string;
   shortTitle: string;
   description: string;
-  category: "Selection" | "Sizing" | "Checklist";
+  category: "Comparison" | "Selection" | "Sizing" | "Checklist";
   readMinutes: number;
   updated: string;
   keyTakeaways: string[];
@@ -41,6 +43,7 @@ export const guides: Guide[] = [
     ],
     body: [
       { type: "p", text: "Almost every DIN-rail terminal block uses one of three connection technologies. They all do the same job — clamp a conductor securely — but they differ in wiring speed, conductor compatibility and maintenance." },
+      { type: "image", photos: ["screw-clamp", "spring-clamp", "push-in"], caption: "The three connection types: screw clamp, spring clamp and push-in." },
       { type: "h2", text: "Screw clamp" },
       { type: "p", text: "A screw drives a clamping yoke down onto the conductor. Screw terminals accept the widest range of conductor types and sizes, from small control wire to very large power conductors, and every electrician knows how to use them." },
       { type: "ul", items: ["Widest conductor range, including large cross-sections", "Must be tightened to the manufacturer's rated torque", "Slowest to wire in high volume"] },
@@ -50,6 +53,7 @@ export const guides: Guide[] = [
       { type: "h2", text: "Push-in" },
       { type: "p", text: "Push-in is a spring connection designed so that solid or ferruled conductors can be pushed straight in without opening the clamp. A release button opens the spring to remove wires or insert fine-stranded wire without a ferrule." },
       { type: "ul", items: ["Fastest wiring for solid and ferruled conductors", "Tool-free insertion", "Fine-stranded wire without ferrules needs the release pressed"] },
+      { type: "image", photos: ["push-in"], caption: "On a push-in block, the orange button opens the spring to remove a wire." },
       { type: "h2", text: "Side-by-side" },
       {
         type: "table",
@@ -87,10 +91,12 @@ export const guides: Guide[] = [
       { type: "p", text: "Terminal blocks are usually named after their nominal cross-section — a \"2.5\" block is built around 2.5 mm² wire. But the nominal size is only the start. Here is a quick way to size one properly." },
       { type: "h2", text: "1. Conductor size and type" },
       { type: "p", text: "Check the block's rated conductor range for your exact conductor: solid, stranded, fine-stranded, and with or without a ferrule. The range often differs between these, and ferrules with plastic collars may reduce the maximum size." },
+      { type: "image", photos: ["push-in", "screw-clamp"], caption: "Phoenix Contact PT 2,5 and UT 4: the number in the name is the nominal cross-section in mm²." },
       { type: "h2", text: "2. Current" },
       { type: "p", text: "Make sure the block's rated current exceeds your circuit's continuous current. Note that the block's rating assumes a conductor of the matching size — the wire is often the limiting factor." },
       { type: "h2", text: "3. Voltage" },
       { type: "p", text: "Check the rated voltage, and remember that accessories such as plug-in jumpers can reduce the rated voltage of an assembly. The datasheet will show the reduced value." },
+      { type: "image", photos: ["accessories"], caption: "An end cover and a plug-in jumper. Jumpers can lower the rated voltage of the assembly." },
       { type: "h2", text: "4. Approvals" },
       { type: "p", text: "Ratings are published per standard. For the same part, the IEC rating and the UL/CSA rating can be different, because the test methods differ. For Canadian and US panels, check the CSA or UL values." },
       { type: "callout", title: "Don't forget temperature", text: "Enclosures get hot. Ratings are given at a reference temperature, and current capacity drops as ambient temperature rises. If your panel runs warm, size up or check the derating curve." },
@@ -117,6 +123,7 @@ export const guides: Guide[] = [
     body: [
       { type: "p", text: "A terminal strip is more than the blocks. The accessories are small and cheap, but forgetting one can hold up a panel build. Run through this list before you submit your BOM." },
       { type: "h2", text: "The checklist" },
+      { type: "image", photos: ["accessories"], caption: "An end cover and a plug-in jumper: both are specific to the block series." },
       { type: "ul", items: [
         "End plates (end covers) — close the open side of the last block in a group.",
         "End stops (end brackets) — clamp to the rail at each end of the strip so blocks can't slide.",
@@ -126,7 +133,8 @@ export const guides: Guide[] = [
         "DIN rail — 35 × 7.5 mm, 35 × 15 mm or 15 mm, cut to length.",
         "Test plugs or test adapters — if your maintenance team tests in place.",
       ] },
-      { type: "callout", title: "Why this matters", text: "Accessories are rarely interchangeable between series or manufacturers. If you're replacing a block series, include the accessories in your RFQ so we can quote a complete, compatible set." },
+      { type: "image", photos: ["hero-grey", "hero-blue", "hero-pe"], caption: "Feed-through, neutral and ground blocks of one series take the same jumpers and markers." },
+      { type: "callout", title: "Why this matters", text: "Accessories are rarely interchangeable between series or manufacturers. If you're replacing a block series, order the matching accessories at the same time so the strip is complete and compatible." },
     ],
     faqs: [
       { q: "Are jumpers interchangeable between brands?", a: "Generally no. Jumpers are designed for a specific series' pitch and jumper channel. Always order jumpers from the same series as the blocks." },

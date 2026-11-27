@@ -66,6 +66,13 @@
         ]
       },
       {
+        "type": "image",
+        "photos": [
+          "disconnect"
+        ],
+        "caption": "A knife-disconnect terminal block: opening the element isolates the circuit without lifting the wires."
+      },
+      {
         "type": "h2",
         "text": "Test sockets"
       },
@@ -107,6 +114,14 @@
           "Plan markers for both sides, since each side is a separate circuit point",
           "Use dedicated CT shorting blocks for current transformer secondaries"
         ]
+      },
+      {
+        "type": "image",
+        "photos": [
+          "disconnect",
+          "ground"
+        ],
+        "caption": "A disconnect block and a ground block from the same series."
       },
       {
         "type": "p",

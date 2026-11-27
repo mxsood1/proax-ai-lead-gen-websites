@@ -16,40 +16,132 @@
     "readMinutes": 4,
     "updated": "2026-10-27",
     "published": "2026-10-27",
-    "related": ["push-in", "screw-clamp", "accessories"],
+    "related": [
+      "push-in",
+      "screw-clamp",
+      "accessories"
+    ],
     "keyTakeaways": [
       "AWG and mm² sizes don't line up exactly, so use the nearest metric size the datasheet lists",
       "A block's nominal size is a rating, not the largest wire it accepts",
       "Ferrules reduce the largest conductor a clamp will take, so check the ferruled range"
     ],
     "body": [
-      { "type": "p", "text": "Terminal block datasheets list conductor sizes in square millimetres (mm²), while North American drawings usually call for AWG. The table below converts the common panel sizes and shows the metric size you will normally see on a terminal block datasheet for each AWG wire." },
-      { "type": "h2", "text": "AWG to mm² conversion chart" },
+      {
+        "type": "p",
+        "text": "Terminal block datasheets list conductor sizes in square millimetres (mm²), while North American drawings usually call for AWG. The table below converts the common panel sizes and shows the metric size you will normally see on a terminal block datasheet for each AWG wire."
+      },
+      {
+        "type": "h2",
+        "text": "AWG to mm² conversion chart"
+      },
       {
         "type": "table",
-        "head": ["AWG", "Exact cross-section", "Nearest metric size"],
+        "head": [
+          "AWG",
+          "Exact cross-section",
+          "Nearest metric size"
+        ],
         "rows": [
-          ["26 AWG", "0.13 mm²", "0.14 mm²"],
-          ["24 AWG", "0.21 mm²", "0.25 mm²"],
-          ["22 AWG", "0.33 mm²", "0.34 mm²"],
-          ["20 AWG", "0.52 mm²", "0.5 mm²"],
-          ["18 AWG", "0.82 mm²", "0.75 mm²"],
-          ["16 AWG", "1.31 mm²", "1.5 mm²"],
-          ["14 AWG", "2.08 mm²", "2.5 mm²"],
-          ["12 AWG", "3.31 mm²", "4 mm²"],
-          ["10 AWG", "5.26 mm²", "6 mm²"],
-          ["8 AWG", "8.37 mm²", "10 mm²"],
-          ["6 AWG", "13.3 mm²", "16 mm²"],
-          ["4 AWG", "21.2 mm²", "25 mm²"],
-          ["2 AWG", "33.6 mm²", "35 mm²"]
+          [
+            "26 AWG",
+            "0.13 mm²",
+            "0.14 mm²"
+          ],
+          [
+            "24 AWG",
+            "0.21 mm²",
+            "0.25 mm²"
+          ],
+          [
+            "22 AWG",
+            "0.33 mm²",
+            "0.34 mm²"
+          ],
+          [
+            "20 AWG",
+            "0.52 mm²",
+            "0.5 mm²"
+          ],
+          [
+            "18 AWG",
+            "0.82 mm²",
+            "0.75 mm²"
+          ],
+          [
+            "16 AWG",
+            "1.31 mm²",
+            "1.5 mm²"
+          ],
+          [
+            "14 AWG",
+            "2.08 mm²",
+            "2.5 mm²"
+          ],
+          [
+            "12 AWG",
+            "3.31 mm²",
+            "4 mm²"
+          ],
+          [
+            "10 AWG",
+            "5.26 mm²",
+            "6 mm²"
+          ],
+          [
+            "8 AWG",
+            "8.37 mm²",
+            "10 mm²"
+          ],
+          [
+            "6 AWG",
+            "13.3 mm²",
+            "16 mm²"
+          ],
+          [
+            "4 AWG",
+            "21.2 mm²",
+            "25 mm²"
+          ],
+          [
+            "2 AWG",
+            "33.6 mm²",
+            "35 mm²"
+          ]
         ]
       },
-      { "type": "h2", "text": "What the nominal size on a terminal block means" },
-      { "type": "p", "text": "Most DIN-rail terminal blocks are named after their nominal cross-section, such as a 2.5 or a 4. That number is the rated conductor size the block is tested with. It is not the largest wire the block accepts: a 2.5 mm² block often takes solid conductors up to 4 mm², and smaller conductors down to around 0.2 mm². The full range is in the datasheet." },
-      { "type": "p", "text": "Datasheets usually give separate ranges for solid wire, stranded wire, and stranded wire with a ferrule. AWG ranges are listed separately again, because they come from UL testing rather than IEC testing. Always check the line that matches the conductor you will actually use." },
-      { "type": "h2", "text": "How ferrules change the range" },
-      { "type": "p", "text": "A ferrule adds a metal sleeve, and insulated ferrules add a plastic collar. Both make the conductor bigger at the clamp, so the largest ferruled conductor a block accepts is often one size smaller than the largest bare conductor. If your shop standard calls for ferrules on every stranded wire, size the block from the ferruled range." },
-      { "type": "h2", "text": "Picking a block from the wire size" },
+      {
+        "type": "h2",
+        "text": "What the nominal size on a terminal block means"
+      },
+      {
+        "type": "p",
+        "text": "Most DIN-rail terminal blocks are named after their nominal cross-section, such as a 2.5 or a 4. That number is the rated conductor size the block is tested with. It is not the largest wire the block accepts: a 2.5 mm² block often takes solid conductors up to 4 mm², and smaller conductors down to around 0.2 mm². The full range is in the datasheet."
+      },
+      {
+        "type": "image",
+        "photos": [
+          "push-in",
+          "screw-clamp"
+        ],
+        "caption": "Phoenix Contact PT 2,5 and UT 4: the number in the name is the nominal cross-section in mm²."
+      },
+      {
+        "type": "p",
+        "text": "Datasheets usually give separate ranges for solid wire, stranded wire, and stranded wire with a ferrule. AWG ranges are listed separately again, because they come from UL testing rather than IEC testing. Always check the line that matches the conductor you will actually use."
+      },
+      {
+        "type": "h2",
+        "text": "How ferrules change the range"
+      },
+      {
+        "type": "p",
+        "text": "A ferrule adds a metal sleeve, and insulated ferrules add a plastic collar. Both make the conductor bigger at the clamp, so the largest ferruled conductor a block accepts is often one size smaller than the largest bare conductor. If your shop standard calls for ferrules on every stranded wire, size the block from the ferruled range."
+      },
+      {
+        "type": "h2",
+        "text": "Picking a block from the wire size"
+      },
       {
         "type": "ul",
         "items": [
@@ -59,14 +151,40 @@
           "Use the same block size for neighbouring circuits where you can, so jumpers and end plates match"
         ]
       },
-      { "type": "callout", "title": "Sourcing tip", "text": "List the wire size and whether you use ferrules on your RFQ. Two blocks with the same nominal size can have different ranges, and that detail is what decides whether a substitute will fit." },
-      { "type": "h2", "text": "Common sizes in control panels" },
-      { "type": "p", "text": "Control circuits in North American panels are commonly wired in 16 or 18 AWG, which sit comfortably in 1.5 mm² and 2.5 mm² blocks. Power distribution often moves to 14, 12 or 10 AWG, which calls for 4 mm² to 6 mm² blocks or larger. Grounding conductors follow the same sizing, using green-yellow PE blocks of the matching size." }
+      {
+        "type": "image",
+        "photos": [
+          "multi-level"
+        ],
+        "caption": "Smaller blocks save rail space; double-level blocks save even more for control wiring."
+      },
+      {
+        "type": "callout",
+        "title": "Sourcing tip",
+        "text": "List the wire size and whether you use ferrules when you order. Two blocks with the same nominal size can have different ranges, and that detail is what decides whether a substitute will fit."
+      },
+      {
+        "type": "h2",
+        "text": "Common sizes in control panels"
+      },
+      {
+        "type": "p",
+        "text": "Control circuits in North American panels are commonly wired in 16 or 18 AWG, which sit comfortably in 1.5 mm² and 2.5 mm² blocks. Power distribution often moves to 14, 12 or 10 AWG, which calls for 4 mm² to 6 mm² blocks or larger. Grounding conductors follow the same sizing, using green-yellow PE blocks of the matching size."
+      }
     ],
     "faqs": [
-      { "q": "Is 14 AWG the same as 2.5 mm²?", "a": "Not exactly. 14 AWG is about 2.08 mm². It is usually terminated in a 2.5 mm² terminal block, because 2.5 mm² is the nearest standard metric size and covers 14 AWG in its range." },
-      { "q": "Can I put two wires in one terminal block clamp?", "a": "Only if the datasheet allows it. Many blocks list a two-conductor range, often requiring twin ferrules. Otherwise use a block with more connection points or a jumper to a second block." },
-      { "q": "Why does the datasheet list a different AWG range than the mm² range?", "a": "AWG ranges come from UL testing and mm² ranges from IEC testing. The two standards test differently, so the ranges don't always convert exactly. Use the range that matches the approval your panel needs." }
+      {
+        "q": "Is 14 AWG the same as 2.5 mm²?",
+        "a": "Not exactly. 14 AWG is about 2.08 mm². It is usually terminated in a 2.5 mm² terminal block, because 2.5 mm² is the nearest standard metric size and covers 14 AWG in its range."
+      },
+      {
+        "q": "Can I put two wires in one terminal block clamp?",
+        "a": "Only if the datasheet allows it. Many blocks list a two-conductor range, often requiring twin ferrules. Otherwise use a block with more connection points or a jumper to a second block."
+      },
+      {
+        "q": "Why does the datasheet list a different AWG range than the mm² range?",
+        "a": "AWG ranges come from UL testing and mm² ranges from IEC testing. The two standards test differently, so the ranges don't always convert exactly. Use the range that matches the approval your panel needs."
+      }
     ]
   },
   "factCheck": [
@@ -76,5 +194,10 @@
     "16 and 18 AWG as common control wiring sizes in North American panels"
   ],
   "reviewNote": "Demo article written for the design preview",
-  "history": [{ "at": "2026-10-27T15:00:00.000Z", "note": "Demo article added and approved for the local preview" }]
+  "history": [
+    {
+      "at": "2026-10-27T15:00:00.000Z",
+      "note": "Demo article added and approved for the local preview"
+    }
+  ]
 }

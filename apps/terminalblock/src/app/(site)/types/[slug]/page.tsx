@@ -3,17 +3,17 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { PageSkeleton } from "@/components/layout/PageSkeleton";
 import { notFound } from "next/navigation";
-import { AlertTriangle, ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
+import { AlertTriangle, ArrowRight, ArrowUpRight, CheckCircle2, ChevronRight } from "lucide-react";
 import { getType, productTypes } from "@/data/types";
-import { rfqHref } from "@/data/products";
-import { getCatalog } from "@/data/catalog";
+import { brands, compareCategories, offers, SHOP_DOMAIN } from "@/data/brands";
+import { buyLinks } from "@/data/buy-links";
 import { DinRail } from "@/components/brand/DinRail";
 import { ProductPhoto } from "@/components/ui/ProductPhoto";
 import { getPhoto } from "@/data/photos";
 import { TypeCard } from "@/components/home/TypesGrid";
 import { Faq } from "@/components/ui/Faq";
 import { ButtonLink } from "@/components/ui/Button";
-import { Badge, Container, Eyebrow } from "@/components/ui/Section";
+import { Container, Eyebrow } from "@/components/ui/Section";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/config/site";
 
@@ -25,14 +25,8 @@ export async function generateMetadata({ params }: PageProps<"/types/[slug]">): 
   const { slug } = await params;
   const t = getType(slug);
   if (!t) return {};
-  return { title: t.name, description: `${t.short} Typical specs, what to watch for, and how to source ${t.name.toLowerCase()} in Canada.` };
+  return { title: t.name, description: `${t.short} Typical specs, what to watch for, and which product family each brand offers.` };
 }
-
-const typeToFn: Record<string, string[]> = {
-  "push-in": ["push-in"],
-  "spring-clamp": ["spring"],
-  "screw-clamp": ["screw"],
-};
 
 export default function TypePage({ params }: PageProps<"/types/[slug]">) {
   return (
@@ -47,17 +41,12 @@ async function TypeContent({ params }: { params: PageProps<"/types/[slug]">["par
   const t = getType(slug);
   if (!t) notFound();
 
-  const catalog = getCatalog();
-  const fnForType: Record<string, string> = { ground: "ground", fuse: "fuse", disconnect: "disconnect", "multi-level": "multi-level", pcb: "pcb", accessories: "accessory" };
-  const related = catalog.items
-    .filter((p) =>
-      typeToFn[t.slug] ? !!p.connection && typeToFn[t.slug].includes(p.connection) && p.fn === "feed-through" : p.fn === fnForType[t.slug],
-    )
-    // parts with their own page (the best sellers) first, then in-stock parts
-    .sort((a, b) => Number(!!b.page) - Number(!!a.page) || Number(!!b.inStock) - Number(!!a.inStock))
-    .slice(0, 8);
+  // Which product family each brand offers for this type (from the comparison data)
+  const category = compareCategories.find((c) => c.typeSlug === t.slug);
+  const byBrand = category ? brands.filter((b) => offers(b, category.id)).map((b) => ({ brand: b, range: b.ranges[category.id] })) : [];
   const others = productTypes.filter((x) => x.slug !== t.slug).slice(0, 5);
   const photo = getPhoto(t.slug);
+  const shop = buyLinks[t.slug] ?? buyLinks.default;
 
   return (
     <>
@@ -88,11 +77,11 @@ async function TypeContent({ params }: { params: PageProps<"/types/[slug]">["par
             <h1 className="mt-4 text-balance text-[36px] font-medium leading-[1.08] text-[#efe9de] sm:text-[48px] sm:tracking-[-0.02em]">{t.name}</h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-[#aaa398]">{t.short}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href={`/rfq?q=${encodeURIComponent(t.name)}`} size="lg">
-                Get a quote <ArrowRight className="h-5 w-5" />
+              <ButtonLink href="/compare" size="lg">
+                Compare brands <ArrowRight className="h-5 w-5" />
               </ButtonLink>
-              <ButtonLink href="/finder" variant="outline-light" size="lg">
-                Open the finder
+              <ButtonLink href="#ask" variant="outline-light" size="lg">
+                Ask a question
               </ButtonLink>
             </div>
           </div>
@@ -106,14 +95,6 @@ async function TypeContent({ params }: { params: PageProps<"/types/[slug]">["par
                   Shown: {photo.part ?? `an example of ${t.name.toLowerCase()}`}
                   {photo.number && !photo.number.includes(",") ? ` (${photo.number})` : ""}
                 </span>
-                {photo.number && !photo.number.includes(",") && photo.part && (
-                  <Link
-                    href={rfqHref([{ partNumber: photo.number, manufacturer: "Phoenix Contact" }])}
-                    className="text-[#efe9de] underline decoration-[#efe9de]/30 underline-offset-4 hover:decoration-[#efe9de]"
-                  >
-                    Quote this part
-                  </Link>
-                )}
               </figcaption>
             </figure>
           ) : (
@@ -154,49 +135,34 @@ async function TypeContent({ params }: { params: PageProps<"/types/[slug]">["par
               </div>
             </div>
 
-            {related.length > 0 && (
+            {byBrand.length > 0 && (
               <div className="mt-12">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-medium">{catalog.source === "supplier" ? "In the catalog" : "Popular series"}</h2>
-                  {catalog.source === "supplier" ? <Badge tone="signal">Featured supplier catalog</Badge> : <Badge tone="demo">Sample data</Badge>}
-                </div>
+                <h2 className="text-2xl font-medium">By brand</h2>
+                <p className="mt-2 text-ink-4">The product family to look for in each manufacturer&apos;s catalogue.</p>
                 <div className="mt-5 overflow-hidden rounded-2xl border border-line">
                   <table className="w-full text-left text-sm">
                     <thead className="bg-paper-2 text-xs text-ink-4">
                       <tr>
-                        <th className="px-4 py-3">Part</th>
-                        <th className="hidden px-4 py-3 sm:table-cell">Wire</th>
-                        <th className="hidden px-4 py-3 sm:table-cell">Current</th>
-                        <th className="px-4 py-3 text-right">RFQ</th>
+                        <th className="px-4 py-3 font-normal">Brand</th>
+                        <th className="px-4 py-3 font-normal">Range</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-line">
-                      {related.map((p) => (
-                        <tr key={p.id} className="hover:bg-paper-2/50">
-                          <td className="px-4 py-3">
-                            <div className="font-mono font-medium">
-                              {p.page ? (
-                                <Link href={p.page} className="underline decoration-line underline-offset-4 hover:decoration-ink">
-                                  {p.partNumber}
-                                </Link>
-                              ) : (
-                                p.partNumber
-                              )}
-                            </div>
-                            <div className="text-xs text-ink-4">{p.manufacturer}</div>
-                          </td>
-                          <td className="hidden px-4 py-3 font-mono sm:table-cell">{p.wireMax !== null ? `${p.wireMax} mm²` : "—"}</td>
-                          <td className="hidden px-4 py-3 font-mono sm:table-cell">{p.current !== null ? `${p.current} A` : "—"}</td>
-                          <td className="px-4 py-3 text-right">
-                            <Link href={rfqHref([p])} className="inline-flex items-center gap-1 font-medium text-ink transition-colors hover:text-signal">
-                              Quote <ArrowRight className="h-3.5 w-3.5" />
-                            </Link>
-                          </td>
+                      {byBrand.map(({ brand, range }) => (
+                        <tr key={brand.slug}>
+                          <td className="px-4 py-3 font-medium">{brand.name}</td>
+                          <td className="px-4 py-3 text-ink-3">{range}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
+                <p className="mt-3 text-xs text-steel">
+                  From the manufacturers&apos; catalogues and datasheets; always confirm on the current datasheet.{" "}
+                  <Link href="/compare" className="underline hover:text-ink">
+                    Compare brands side by side
+                  </Link>
+                </p>
               </div>
             )}
 
@@ -219,12 +185,27 @@ async function TypeContent({ params }: { params: PageProps<"/types/[slug]">["par
               </dl>
             </div>
             <div className="rounded-2xl bg-paper p-6 shadow-[inset_0_0_0_1px_var(--color-line)]">
-              <h3 className="text-lg font-medium">Need {t.name.toLowerCase()}?</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-4">Send part numbers or specs and we’ll come back with options from several suppliers.</p>
-              <ButtonLink href={`/rfq?q=${encodeURIComponent(t.name)}`} className="mt-5 w-full">
-                Request a quote
+              <h3 className="text-lg font-medium">Choosing {t.name.toLowerCase()}?</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-4">See how the brands compare, or ask us a question about your application.</p>
+              <ButtonLink href="/compare" className="mt-5 w-full">
+                Compare brands
               </ButtonLink>
             </div>
+            {shop && (
+              <a
+                href={shop.href}
+                target="_blank"
+                rel="noopener"
+                className="flex items-center justify-between gap-3 rounded-2xl p-5 shadow-[inset_0_0_0_1px_var(--color-line)] transition-shadow hover:shadow-[inset_0_0_0_1px_var(--color-steel-light)]"
+              >
+                <span>
+                  <span className="block text-sm text-steel">Where to buy</span>
+                  <span className="mt-1 block font-medium">{shop.label}</span>
+                  <span className="text-xs text-steel">at {SHOP_DOMAIN}</span>
+                </span>
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-steel" />
+              </a>
+            )}
           </aside>
         </Container>
       </section>

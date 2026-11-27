@@ -7,6 +7,10 @@ import { AiUnavailableError, structured } from "@/server/ai/claude";
 import { config } from "@/server/config";
 import { listDrafts, newDraftId, saveDraft, withHistory, type Draft } from "./store";
 import { DUPLICATE_THRESHOLD, similarity } from "./topics";
+import { articleImages } from "@/data/photos";
+
+/** Images the AI may place in articles: only real product photos from the site's library */
+const IMAGE_IDS = articleImages().map((p) => p.id) as [string, ...string[]];
 
 export { similarity };
 
@@ -49,6 +53,13 @@ const Block = z.union([
   z.object({ type: z.literal("ul"), items: z.array(z.string()) }),
   z.object({ type: z.literal("callout"), title: z.string(), text: z.string() }),
   z.object({ type: z.literal("table"), head: z.array(z.string()), rows: z.array(z.array(z.string())) }),
+  z
+    .object({
+      type: z.literal("image"),
+      photos: z.array(z.enum(IMAGE_IDS)).min(1).max(3),
+      caption: z.string(),
+    })
+    .describe("Product images from the site's own library, one to three in a row. Use two to four of these per guide, near the text they illustrate"),
 ]);
 
 const DraftSchema = z.object({
@@ -56,7 +67,7 @@ const DraftSchema = z.object({
   title: z.string().describe("Specific, plain title without a trailing period, under 70 characters"),
   shortTitle: z.string().describe("Two to five words for navigation"),
   description: z.string().describe("One sentence meta description, under 155 characters, no trailing period"),
-  category: z.enum(["Selection", "Sizing", "Checklist"]),
+  category: z.enum(["Comparison", "Selection", "Sizing", "Checklist"]),
   readMinutes: z.number().int().min(2).max(6),
   keyTakeaways: z.array(z.string()).describe("Three short takeaways"),
   body: z.array(Block).describe("400 to 700 words in total. Short paragraphs, practical, no fluff, no marketing hype"),
@@ -66,18 +77,23 @@ const DraftSchema = z.object({
 });
 type DraftData = z.infer<typeof DraftSchema>;
 
-const SYSTEM = `You write short, practical technical guides for ${site.name}, a Canadian terminal block sourcing site.
+const SYSTEM = `You write short, practical comparison guides for ${site.name}, a Canadian site that compares terminal block brands and helps engineers choose.
 Audience: panel builders, electrical engineers, maintenance technicians and buyers.
 Rules:
-- Stay neutral about manufacturers. Never criticise, rank or compare brands on quality or price, and never claim any company is an authorized distributor, partner or endorser. Name brands only to identify products.
-- Do not mention the site's supplier or any distributor by name.
+- Compare brands fairly and factually (Phoenix Contact, Weidmüller, WAGO, Schneider Electric, ABB, Siemens, Allen-Bradley, Omron and others): name their product families, say what each range offers, and give every brand both its strengths and the things to check. Never declare one brand best overall; say which fits which situation and why.
+- Use only facts a reader can verify in the manufacturer's catalogue or datasheet. If you are not sure a product family or rating exists, leave it out rather than guess, and add it to factCheck.
+- Never claim any company is an authorized distributor, partner or endorser, and don't promote any seller. Do not name distributors.
+- Compare at the level of product families and specific parts where useful (for example one brand's 2.5 mm² push-in feed-through block against another's), with the specs that matter: conductor range, rated current and voltage, width, approvals.
 - Be accurate. Never invent ratings, part numbers, prices or statistics. Prefer general, verifiable guidance and say "check the manufacturer's datasheet" where values vary.
 - No hype words (seamless, revolutionary, game-changing, unlock, supercharge), no exclamation marks, no emoji.
 - Canadian English. Mention North American approvals (UL, CSA) where relevant, alongside IEC.
 - Headings and list items without trailing periods. Paragraphs are full sentences.
 - Answer the search query directly in the first paragraph, then add the detail a buyer needs to choose or order correctly.
 - End with useful FAQs. Do not add a sales pitch; the site adds its own call to action.
-Product type pages on the site (for "related"): ${productTypes.map((t) => `${t.slug} (${t.name})`).join(", ")}.`;
+Product type pages on the site (for "related"): ${productTypes.map((t) => `${t.slug} (${t.name})`).join(", ")}.
+Images you can place with image blocks (id: what it shows): ${articleImages()
+  .map((p) => `${p.id}: ${p.alt}`)
+  .join("; ")}. Only use an image where it shows what the text describes, and say in the caption what the reader is looking at.`;
 
 async function aiDraft(keyword: string): Promise<DraftData> {
   return structured(DraftSchema, {

@@ -45,6 +45,13 @@
         ]
       },
       {
+        "type": "image",
+        "photos": [
+          "multi-level"
+        ],
+        "caption": "A double-level push-in block: two connection levels on the width of one."
+      },
+      {
         "type": "p",
         "text": "For power wiring, or where technicians need easy access to every connection, single-level blocks are often the better choice. Upper levels are harder to reach and harder to read once the wiring duct is full."
       },
@@ -82,6 +89,14 @@
       {
         "type": "p",
         "text": "Before ordering, sketch which circuit lands on which level. Keep related circuits on the same level along the strip so jumpers can run straight, and leave a few spare positions for future I/O. Count the end plates and the level-specific jumpers from that sketch."
+      },
+      {
+        "type": "image",
+        "photos": [
+          "multi-level",
+          "accessories"
+        ],
+        "caption": "Plan jumpers and end covers per level and per series."
       },
       {
         "type": "h2",

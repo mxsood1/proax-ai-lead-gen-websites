@@ -15,7 +15,7 @@ const guide = (over: Partial<Guide> = {}): Guide => ({
   readMinutes: 3,
   updated: "2026-11-24",
   keyTakeaways: ["Match the fuse size"],
-  body: [{ type: "p", text: words(500) }],
+  body: [{ type: "p", text: words(500) }, { type: "image", photos: ["fuse"], caption: "A fuse block" }],
   faqs: [{ q: "Do I need an LED?", a: "Only if you want a blown-fuse indicator." }],
   ...over,
 });
@@ -69,6 +69,7 @@ describe("quality checks", () => {
     expect(text).toMatch(/exclamation/);
     expect(text).toMatch(/Proax/);
     expect(text).toMatch(/No FAQs/);
+    expect(text).toMatch(/No images/);
   });
 
   it("flags authorized-distributor claims", () => {
@@ -84,6 +85,8 @@ describe("article text format", () => {
     { type: "h3", text: "Indicators" },
     { type: "callout", title: "Sourcing tip", text: "Order spare fuses with the blocks." },
     { type: "table", head: ["Format", "Typical use"], rows: [["5 × 20 mm", "Control | signal"], ["10 × 38 mm", "Power"]] },
+    { type: "image", photos: ["push-in", "spring-clamp", "screw-clamp"], caption: "The three connection types." },
+    { type: "image", photos: ["ground"] },
     { type: "p", text: "Closing paragraph." },
   ];
 

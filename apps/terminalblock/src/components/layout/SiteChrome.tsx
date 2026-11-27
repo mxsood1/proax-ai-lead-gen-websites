@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { AskQuestion } from "@/components/leads/AskQuestion";
 
-/** Public website chrome. The sourcing desk (/desk) has its own layout. */
+/** Public website chrome. The "Ask us your question" form closes every page. The desk (/desk) has its own layout. */
 export function SiteChrome({ children }: { children: ReactNode }) {
   return (
     <>
@@ -13,6 +14,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       <main id="main" className="flex-1">
         {children}
       </main>
+      <AskQuestion />
       <Footer />
     </>
   );

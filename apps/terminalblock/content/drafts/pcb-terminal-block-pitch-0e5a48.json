@@ -38,6 +38,13 @@
         "text": "The gap is only 0.08 mm per position, but it adds up. Across a 10-position block there are nine gaps, so the outer pins are 0.72 mm apart from where the footprint expects them. That is enough to stop the block from going into the board, or to stress the solder joints if it is forced in."
       },
       {
+        "type": "image",
+        "photos": [
+          "pcb"
+        ],
+        "caption": "A pluggable PCB terminal block plug at 5.08 mm pitch: the plug and header must have the same pitch."
+      },
+      {
         "type": "table",
         "head": [
           "Positions",
@@ -101,8 +108,15 @@
         "text": "Fixed PCB terminal blocks are soldered straight to the board and are the lowest-cost option. Pluggable blocks split into a header on the board and a plug that carries the field wiring, so a device can be swapped without disconnecting conductors. They cost a little more, but save time wherever boards are replaced in the field."
       },
       {
+        "type": "image",
+        "photos": [
+          "pcb"
+        ],
+        "caption": "The plug part of a pluggable PCB terminal block. It mates with a header soldered to the board."
+      },
+      {
         "type": "h2",
-        "text": "What to put on your RFQ"
+        "text": "What to put on your order"
       },
       {
         "type": "p",

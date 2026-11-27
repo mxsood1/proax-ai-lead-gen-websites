@@ -14,7 +14,7 @@ create table if not exists public.leads (
   ref         text not null unique,
   site        text not null,
   status      text not null default 'new'
-              check (status in ('new','reviewing','sourcing','quoted','won','lost','spam')),
+              check (status in ('new','reviewing','answered','sourcing','quoted','won','lost','spam')),
   created_at  timestamptz not null default now(),
   data        jsonb not null
 );

@@ -1,0 +1,148 @@
+{
+  "id": "push-in-terminal-blocks-compared-9b4d27",
+  "keyword": "push-in terminal blocks compared by brand",
+  "status": "approved",
+  "source": "manual",
+  "createdBy": "desk",
+  "createdAt": "2026-11-26T14:30:00.000Z",
+  "updatedAt": "2026-11-26T15:30:00.000Z",
+  "publishedAt": "2026-11-26T15:30:00.000Z",
+  "guide": {
+    "slug": "push-in-terminal-blocks-compared",
+    "title": "Push-in terminal blocks compared: Phoenix Contact, Weidmüller, WAGO and more",
+    "shortTitle": "Push-in blocks by brand",
+    "description": "The push-in ranges from the major brands, what they have in common and what to check before you standardise on one",
+    "category": "Comparison",
+    "readMinutes": 4,
+    "updated": "2026-11-26",
+    "published": "2026-11-26",
+    "keyTakeaways": [
+      "Every major brand now offers a push-in range; the basics work the same way",
+      "Differences are in conductor approvals, accessories, test points and how the release is operated",
+      "Standardise on one series per panel so jumpers, markers and end plates match"
+    ],
+    "body": [
+      {
+        "type": "p",
+        "text": "Push-in terminal blocks accept solid or ferruled conductors without a tool, which makes them the fastest option for high wire counts. Most major manufacturers offer a push-in range, and the core idea is the same in each. What differs is the detail you only notice once a panel is half built."
+      },
+      {
+        "type": "h2",
+        "text": "Who offers what"
+      },
+      {
+        "type": "table",
+        "head": [
+          "Brand",
+          "Push-in range"
+        ],
+        "rows": [
+          [
+            "Phoenix Contact",
+            "PT series"
+          ],
+          [
+            "Weidmüller",
+            "A-Series"
+          ],
+          [
+            "WAGO",
+            "TOPJOB S"
+          ],
+          [
+            "Schneider Electric",
+            "Linergy TR push-in"
+          ],
+          [
+            "Omron",
+            "XW5T (Push-In Plus)"
+          ]
+        ]
+      },
+      {
+        "type": "image",
+        "photos": [
+          "push-in"
+        ],
+        "caption": "A push-in feed-through block: the orange button opens the spring for removal or for fine-stranded wire."
+      },
+      {
+        "type": "h2",
+        "text": "What to compare"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Approved conductor range with and without ferrules, especially for fine-stranded wire",
+          "Rated current and voltage for your conductor size, under the approvals you need (UL, CSA, IEC)",
+          "Block width, which sets how many terminals fit on the rail",
+          "Jumper system: how many poles, and whether jumpers can skip positions",
+          "Test points and marker options built into the block"
+        ]
+      },
+      {
+        "type": "image",
+        "photos": [
+          "hero-grey",
+          "hero-blue",
+          "hero-pe"
+        ],
+        "caption": "Feed-through, neutral and ground versions in one push-in series share jumpers and markers."
+      },
+      {
+        "type": "h2",
+        "text": "Strengths to look for"
+      },
+      {
+        "type": "p",
+        "text": "WAGO's whole rail-mount range is built on spring-pressure clamping, so push-in is its core technology rather than an addition. Phoenix Contact and Weidmüller offer push-in alongside spring and screw ranges, which helps when one panel needs all three. Omron uses the same push-in style across its relays, sockets and terminal blocks, which suits panels built mostly from Omron components."
+      },
+      {
+        "type": "callout",
+        "title": "Fine-stranded wire",
+        "text": "With every brand, fine-stranded wire without a ferrule normally needs the release opened before insertion. If your shop doesn't crimp ferrules, check the approved conductor list on the datasheet."
+      },
+      {
+        "type": "h2",
+        "text": "How to choose"
+      },
+      {
+        "type": "p",
+        "text": "If your plant already standardises on one brand, staying with it keeps spares, tools and training simple. For a new standard, compare two or three ranges on the points above for the block sizes you use most, and check that the special-function blocks you need (fuse, disconnect, multi-level) exist in the same series."
+      },
+      {
+        "type": "image",
+        "photos": [
+          "accessories"
+        ],
+        "caption": "Check the jumper system of each series: pole counts and whether jumpers can skip positions."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Do all push-in terminal blocks need ferrules?",
+        "a": "No. Solid wire and ferruled stranded wire can usually be pushed straight in. Fine-stranded wire without a ferrule normally needs the release opened. The datasheet lists the approved conductors."
+      },
+      {
+        "q": "Can push-in blocks from different brands share jumpers?",
+        "a": "No. Jumpers, end plates and markers are specific to each brand and usually to each series. Keep bridged groups within one series."
+      }
+    ],
+    "related": [
+      "push-in",
+      "accessories"
+    ]
+  },
+  "factCheck": [
+    "Push-in range names for each brand (PT, A-Series, TOPJOB S, Linergy TR, XW5T)",
+    "Statement that WAGO's rail-mount range is spring-pressure based",
+    "Omron Push-In Plus used across relays, sockets and terminal blocks"
+  ],
+  "reviewNote": "Demo article written for the design preview",
+  "history": [
+    {
+      "at": "2026-11-26T15:30:00.000Z",
+      "note": "Demo comparison article added and approved for the local preview"
+    }
+  ]
+}

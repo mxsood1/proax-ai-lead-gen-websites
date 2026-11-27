@@ -32,15 +32,17 @@ export function ButtonLink({
   size,
   className,
   children,
+  onClick,
 }: {
   href: string;
   variant?: Variant;
   size?: Size;
   className?: string;
   children: ReactNode;
+  onClick?: () => void;
 }) {
   return (
-    <Link href={href} className={buttonClass(variant, size, className)}>
+    <Link href={href} onClick={onClick} className={buttonClass(variant, size, className)}>
       {children}
     </Link>
   );

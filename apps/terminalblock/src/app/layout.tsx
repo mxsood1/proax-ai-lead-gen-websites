@@ -3,7 +3,7 @@ import { JetBrains_Mono, Poppins } from "next/font/google";
 import { site } from "@/config/site";
 import "./globals.css";
 
-// Same typeface and weights as proax.ca (Poppins 300–700)
+// Poppins 300–700 for all text
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
@@ -18,7 +18,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Terminal block sourcing & RFQs in Canada`,
+    default: `${site.name} — Compare terminal block brands side by side`,
     template: `%s · ${site.name}`,
   },
   description: site.description,

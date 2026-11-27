@@ -3,11 +3,11 @@ import { getPublishedGuides } from "@/server/content/published";
 import { GuideCard } from "@/components/guides/GuideCard";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Container } from "@/components/ui/Section";
-import { GuideOffer } from "@/components/leads/GuideOffer";
+import { AskQuestion } from "@/components/leads/AskQuestion";
 
 export const metadata: Metadata = {
   title: "Terminal block guides",
-  description: "Short, practical guides to selecting, sizing and sourcing terminal blocks.",
+  description: "Brand comparisons and practical guides to choosing and sizing terminal blocks.",
 };
 
 export default async function GuidesPage() {
@@ -17,15 +17,15 @@ export default async function GuidesPage() {
       <PageHeader
         code="GD"
         eyebrow="Guides"
-        title="Short answers to real buyer questions"
-        lede="Concise, technically checked guides for engineers, panel builders and buyers. Read in under five minutes."
+        title="Brand comparisons and plain answers"
+        lede="How the major brands compare, and the selection questions engineers and panel builders ask most. Read in under five minutes."
         image="header-guides"
         imagePosition="center 30%"
       />
       <section className="py-14 sm:py-20">
         <Container>
           <div className="mb-12">
-            <GuideOffer />
+            <AskQuestion variant="panel" />
           </div>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {guides.map((g, i) => (

@@ -4,9 +4,13 @@ import { ArrowRight } from "lucide-react";
 import type { Guide } from "@/data/guides";
 import { getPhoto } from "@/data/photos";
 import { TerminalModule, type ModuleVariant } from "@/components/brand/TerminalModule";
-import { Marker } from "@/components/ui/Section";
 
 const visual: Record<Guide["category"], { variant: ModuleVariant; connection: "push-in" | "screw" | "spring" }[]> = {
+  Comparison: [
+    { variant: "grey", connection: "push-in" },
+    { variant: "blue", connection: "spring" },
+    { variant: "grey", connection: "screw" },
+  ],
   Selection: [
     { variant: "grey", connection: "screw" },
     { variant: "grey", connection: "spring" },
@@ -25,6 +29,7 @@ const visual: Record<Guide["category"], { variant: ModuleVariant; connection: "p
 };
 
 /** Article card. Shows a real product image of the article's main topic when one exists. */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- index kept so existing callers compile
 export function GuideCard({ g, index = 0 }: { g: Guide; index?: number }) {
   const photo = g.related?.map((slug) => getPhoto(slug)).find((p) => p?.cutout) ?? null;
   return (
@@ -52,7 +57,6 @@ export function GuideCard({ g, index = 0 }: { g: Guide; index?: number }) {
             </div>
           </>
         )}
-        <Marker className="absolute left-3 top-3">{`G-${String(index + 1).padStart(2, "0")}`}</Marker>
       </div>
       <div className="flex flex-1 flex-col p-6">
         <div className="text-xs text-steel">

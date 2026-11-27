@@ -5,7 +5,7 @@ import { TerminalModule } from "@/components/brand/TerminalModule";
 import { ProductPhoto } from "@/components/ui/ProductPhoto";
 import { getPhoto } from "@/data/photos";
 import { cn } from "@/lib/cn";
-import { Container, Marker, SectionHeading } from "@/components/ui/Section";
+import { Container, SectionHeading } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 
 export function TypeCard({ t }: { t: (typeof productTypes)[number] }) {
@@ -20,7 +20,7 @@ export function TypeCard({ t }: { t: (typeof productTypes)[number] }) {
           <ProductPhoto
             photo={photo}
             sizes="(min-width: 1024px) 240px, (min-width: 768px) 33vw, 50vw"
-            className={cn("transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]", photo.cutout && "p-6 pt-9")}
+            className={cn("transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]", photo.cutout && "p-6")}
           />
         ) : (
           <>
@@ -32,7 +32,6 @@ export function TypeCard({ t }: { t: (typeof productTypes)[number] }) {
             </div>
           </>
         )}
-        <Marker className="absolute left-3 top-3">{t.code}</Marker>
       </div>
       <div className="flex flex-1 flex-col p-4">
         <h3 className="font-medium leading-snug">{t.name}</h3>
